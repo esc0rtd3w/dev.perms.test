@@ -12,6 +12,7 @@ import dev.perms.test.tools.intent.ToolsIntentLauncherController;
 import dev.perms.test.tools.intentreceiver.ToolsIntentReceiverTesterController;
 import dev.perms.test.tools.permissions.ToolsPermissionsTesterController;
 import dev.perms.test.tools.root.ToolsRootCheckerController;
+import dev.perms.test.tools.screenshot.ToolsScreenshotController;
 import dev.perms.test.tools.system.ToolsSystemAnalyzerController;
 import dev.perms.test.tools.text.ToolsTextEditorController;
 
@@ -42,6 +43,7 @@ public final class ToolsActivityControllers {
     private SaveDataEditorController saveDataEditorController;
     private FileHexEditorController fileHexEditorController;
     private ToolsTextEditorController toolsTextEditorController;
+    private ToolsScreenshotController toolsScreenshotController;
 
     public ToolsActivityControllers(Host host) {
         this.host = host;
@@ -63,6 +65,7 @@ public final class ToolsActivityControllers {
         getFileHexEditorController().bind();
         getToolsTextEditorController().bind();
         getSaveDataEditorController().bind();
+        getToolsScreenshotController().bind();
     }
 
     public boolean handleIncomingTextEditorIntent(Intent intent) {
@@ -73,6 +76,7 @@ public final class ToolsActivityControllers {
         if (toolsRootCheckerController != null) toolsRootCheckerController.stop();
         if (toolsActivityManagerController != null) toolsActivityManagerController.stop();
         if (saveDataEditorController != null) saveDataEditorController.stop();
+        if (toolsScreenshotController != null) toolsScreenshotController.stop();
     }
 
 
@@ -328,6 +332,45 @@ public final class ToolsActivityControllers {
         return saveDataEditorController;
     }
 
+    private ToolsScreenshotController getToolsScreenshotController() {
+        if (toolsScreenshotController == null) {
+            toolsScreenshotController = new ToolsScreenshotController(new ToolsScreenshotController.Host() {
+                @Override
+                public Activity getActivity() {
+                    return host == null ? null : host.getActivity();
+                }
+
+                @Override
+                public ActivityMainBinding getBinding() {
+                    return host == null ? null : host.getBinding();
+                }
+
+                @Override
+                public void appendOutput(String message) {
+                    if (host != null) host.appendOutput(message);
+                }
+
+                @Override
+                public boolean isDebugOutputEnabled() {
+                    return host != null && host.isDebugOutputEnabled();
+                }
+
+                @Override
+                public void debugOutput(String area, String message) {
+                    if (host != null) host.debugOutput(area, message);
+                }
+
+                @Override
+                public void runShellCommandCapture(String command, ToolsScreenshotController.ShellCallback callback) {
+                    if (host == null) return;
+                    host.runShellCommandCapture(command, callback == null
+                            ? null
+                            : (code, out, err) -> callback.onComplete(code, out, err));
+                }
+            });
+        }
+        return toolsScreenshotController;
+    }
 
 
 }

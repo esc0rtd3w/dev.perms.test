@@ -53,6 +53,7 @@ public final class ToolsGroupboxPopoutController {
     private static final String TAG_HEX_EDITOR = "tools_popout_hex_editor";
     private static final String TAG_TEXT_EDITOR = "tools_popout_text_editor";
     private static final String TAG_SAVE_DATA_EDITOR = "tools_popout_save_data_editor";
+    private static final String TAG_SCREENSHOT_TOOL = "tools_popout_screenshot_tool";
     private static final int[] DYNAMIC_CONTAINER_IDS = new int[]{
             R.id.llToolsActivityResults,
             R.id.llToolsReceiverTemplates,
@@ -89,6 +90,8 @@ public final class ToolsGroupboxPopoutController {
                     v -> openToolsCardPopout("tools:text_editor", "Text Editor", TAG_TEXT_EDITOR));
             bindButton(findTaggedButton(toolsRoot, TAG_SAVE_DATA_EDITOR),
                     v -> openToolsCardPopout("tools:save_data_editor", "Save Data Editor", TAG_SAVE_DATA_EDITOR));
+            bindButton(findTaggedButton(toolsRoot, TAG_SCREENSHOT_TOOL),
+                    v -> openToolsCardPopout("tools:screenshot_tool", "Screenshot Tool", TAG_SCREENSHOT_TOOL));
         } catch (Throwable ignored) {
         }
     }
@@ -185,6 +188,7 @@ public final class ToolsGroupboxPopoutController {
         hideTaggedButton(root, TAG_HEX_EDITOR);
         hideTaggedButton(root, TAG_TEXT_EDITOR);
         hideTaggedButton(root, TAG_SAVE_DATA_EDITOR);
+        hideTaggedButton(root, TAG_SCREENSHOT_TOOL);
     }
 
     private void bindCloneButtons(View root, final boolean[] syncing, PanelDynamicContentMirror dynamicMirror) {

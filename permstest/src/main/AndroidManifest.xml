@@ -87,6 +87,20 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <receiver
+            android:name=".admin.PermsTestDeviceAdminReceiver"
+            android:label="@string/device_admin_label"
+            android:description="@string/device_admin_desc"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/perms_test_device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".startup.StartupLoadingActivity"
             android:exported="false"
@@ -153,6 +167,14 @@
                 android:minHeight="460dp"
                 android:gravity="center" />
         </activity>
+
+        <activity
+            android:name=".tools.screenshot.ScreenshotMeasureActivity"
+            android:label="Screenshot Measure"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Main" />
 
         <activity
             android:name=".plugins.PluginToolPanelActivity"
