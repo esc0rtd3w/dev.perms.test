@@ -1,0 +1,28 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "script_demo_plugin",
+  "name": "Script Action Demo",
+  "version": "1.0",
+  "author": "PermsTest",
+  "runtime": "script",
+  "icon": "icon.png",
+  "description": "Self-contained plugin with a controlled shell/script action routed through the selected PermsTest backend.",
+  "comments": "Demonstrates script-capable plugins. Commands run through the host shell API and output is appended to PermsTest logs/output.",
+  "actions": [
+    {
+      "id": "device_props",
+      "title": "Show Device Props",
+      "description": "Run a small shell command through the plugin host.",
+      "type": "shell",
+      "handler": "shell",
+      "command": "printf 'model='; getprop ro.product.model; printf 'sdk='; getprop ro.build.version.sdk; printf 'abi='; getprop ro.product.cpu.abi",
+      "presentation": "log"
+    }
+  ],
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "shell_command"
+  ]
+}

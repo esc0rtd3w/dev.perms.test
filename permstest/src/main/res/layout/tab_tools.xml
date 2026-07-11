@@ -1,0 +1,2673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tabTools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    android:scrollbarStyle="insideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tools"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Root Checker"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_root_checker"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Root Checker"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsRootCheck"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Check Root" />
+
+                    <TextView
+                        android:id="@+id/txtToolsRootStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="Root: not checked"
+                        android:textStyle="bold"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardToolsSystemAnalyzer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="System Analyzer"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:paddingBottom="8dp"
+                    android:text="Hardware, CPU, GPU, RAM, storage, and developer-state snapshot."
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsSystemAnalyzerRefresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Refresh" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsSystemAnalyzerCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Copy" />
+
+                    <TextView
+                        android:id="@+id/txtToolsSystemAnalyzerStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="Tap Refresh for system snapshot."
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/listToolsSystemAnalyzer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Activity Manager"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_activity_manager"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Activity Manager"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View installed app activities, expand an app row, and launch exported activity components for quick diagnostics."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsActivityUseShizuku"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Use Shizuku" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsActivityShowSystemApps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:checked="false"
+                            android:text="Show System Apps" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsActivityShowIcons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:checked="true"
+                            android:text="Show App Icons" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsActivityHideRootActivities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:checked="false"
+                            android:text="Hide Root Activities" />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsActivityHideNonExported"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:checked="false"
+                            android:text="Hide Non Exported" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="Filter Results"
+                        android:textSize="12sp"
+                        android:alpha="0.78" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.42"
+                        android:hint="App, package, activity, or label"
+                        app:endIconMode="clear_text"
+                        app:expandedHintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsActivityFilter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="48dp"
+                            android:singleLine="true"
+                            android:inputType="text"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.58" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txtToolsActivityStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tap Refresh to load app activities."
+                        android:textSize="12sp"
+                        android:alpha="0.75" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsActivityRefresh"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Refresh" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llToolsActivityResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardToolsIntentLauncher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Intent Tester"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_intent_tester"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Intent Tester"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Build, launch, capture, and generate manifest snippets for intent testing. Receiver templates stay separate from the launcher workflow."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="?attr/colorOutline"
+                    app:cardBackgroundColor="?attr/colorSurface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Intent Launcher"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Build and launch explicit or action-based intents. Save common launch configs as named presets for quick reuse."
+                            android:textSize="12sp"
+                            android:alpha="0.75"
+                            android:paddingBottom="8dp" />
+<HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsIntentUseShizuku"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Use Shizuku" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsIntentLaunch"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="Launch" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsIntentClear"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="Clear" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsIntentHistory"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Saved intent"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/ddToolsIntentHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsIntentLoad"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Load" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsIntentSave"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Save" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsIntentDelete"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Delete" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsIntentPackage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Package name"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/edtToolsIntentPackage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsIntentClass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:hint="Class name"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/edtToolsIntentClass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilToolsIntentAction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Action"
+                    app:expandedHintEnabled="false"
+                    app:endIconMode="dropdown_menu">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/ddToolsIntentAction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="center_vertical"
+                        android:completionThreshold="0"
+                        android:inputType="none"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsIntentData"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Data URI"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/edtToolsIntentData"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsIntentMime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:hint="MIME type"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/ddToolsIntentMime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilToolsIntentCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Categories"
+                    app:helperText="Pick common categories or long-press for custom comma/newline text."
+                    app:expandedHintEnabled="false"
+                    app:endIconMode="dropdown_menu">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/edtToolsIntentCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="center_vertical"
+                        android:completionThreshold="0"
+                        android:inputType="none"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Flags"
+                    app:helperText="Names like NEW_TASK, CLEAR_TOP, or numeric values like 0x10000000"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtToolsIntentFlags"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="top|start"
+                        android:minLines="2"
+                        android:inputType="textNoSuggestions|textMultiLine"
+                        android:singleLine="false"
+                        android:text="NEW_TASK"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Extras"
+                    app:helperText="One per line: key=value, s:key=value, i:count=1, b:enabled=true"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtToolsIntentExtras"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="80dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="top|start"
+                        android:inputType="textNoSuggestions|textMultiLine"
+                        android:singleLine="false"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtToolsIntentStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Fill package/class or action/data, then launch. Saved intents are stored locally in PermsTest settings."
+                    android:textSize="12sp"
+                    android:alpha="0.75" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+                
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="?attr/colorOutline"
+                    app:cardBackgroundColor="?attr/colorSurface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Intent Receiver"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Enable installed receiver handlers, then open another app/browser/file manager to test whether PermsTest appears as a handler. Custom filters still generate manifest snippets until APK repack support is wired."
+                            android:textSize="12sp"
+                            android:alpha="0.75"
+                            android:paddingBottom="8dp" />
+
+                        <dev.perms.test.ui.widget.BoundedNestedScrollView
+                            android:id="@+id/svToolsReceiverTemplates"
+                            android:layout_width="match_parent"
+                            android:layout_height="360dp"
+                            android:layout_marginTop="4dp"
+                            android:fadeScrollbars="false"
+                            android:fillViewport="false"
+                            android:scrollbarStyle="outsideInset">
+
+                            <LinearLayout
+                                android:id="@+id/llToolsReceiverTemplates"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" />
+                        </dev.perms.test.ui.widget.BoundedNestedScrollView>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilToolsReceiverCustomPreset"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Custom preset"
+                            app:expandedHintEnabled="false"
+                            app:endIconMode="dropdown_menu">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                android:id="@+id/ddToolsReceiverCustomPreset"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="56dp"
+                                android:includeFontPadding="false"
+                                android:paddingTop="12dp"
+                                android:paddingStart="12dp"
+                                android:paddingBottom="12dp"
+                                android:paddingEnd="64dp"
+                                android:gravity="center_vertical"
+                                android:ellipsize="end"
+                                android:completionThreshold="0"
+                                android:inputType="none"
+                                android:singleLine="true"
+                                android:scrollHorizontally="true"
+                                android:textSize="13sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Custom filter"
+                            android:textStyle="bold"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Action"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomAction"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:hint="MIME type"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomMime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Scheme"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomScheme"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:hint="Host"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomHost"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Path prefix"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomPathPrefix"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:hint="Extra category"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsReceiverCustomCategory"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.checkbox.MaterialCheckBox
+                                android:id="@+id/chkToolsReceiverCustomDefault"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="Default" />
+
+                            <com.google.android.material.checkbox.MaterialCheckBox
+                                android:id="@+id/chkToolsReceiverCustomBrowsable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="Browsable" />
+                        </LinearLayout>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsReceiverPreferCaptureBuiltIns"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="Prefer capture over built-in PermsTest handlers while active"
+                            android:textSize="12sp" />
+
+<HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fillViewport="true"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverOpenCapture"
+                                    android:layout_width="140dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Apply Active" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverDisableAll"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Disable All" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverSelectAll"
+                                    android:layout_width="110dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Select All" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverSelectNone"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Select None" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverPreview"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Preview" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverCopy"
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Copy Filters" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsReceiverClear"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Clear" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:id="@+id/txtToolsReceiverStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Checked templates can be enabled as installed PermsTest receiver aliases. Custom filters are copied as snippets until repack support is wired."
+                            android:textSize="12sp"
+                            android:alpha="0.75" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Captured events"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.checkbox.MaterialCheckBox
+                                android:id="@+id/chkToolsReceiverSaveEventsToFile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Save to file"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnToolsReceiverClearEvents"
+                                android:layout_width="96dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:minWidth="0dp"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:text="Clear Log"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txtToolsReceiverEventLog"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:minHeight="48dp"
+                            android:fontFamily="monospace"
+                            android:text="No captured receiver events yet."
+                            android:textSize="11sp"
+                            android:alpha="0.85" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="?attr/colorOutline"
+                    app:cardBackgroundColor="?attr/colorSurface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingBottom="2dp"
+                            android:tag="collapsible_groupbox_header">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Permissions Tester"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:tag="tools_popout_permissions_tester"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_marginStart="8dp"
+                                android:contentDescription="Pop out Permissions Tester"
+                                android:insetLeft="0dp"
+                                android:insetTop="0dp"
+                                android:insetRight="0dp"
+                                android:insetBottom="0dp"
+                                android:minWidth="0dp"
+                                android:minHeight="0dp"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:text=""
+                                app:icon="@drawable/ic_popout_open_in_new_24"
+                                app:iconGravity="textStart"
+                                app:iconTint="?attr/colorPrimary"
+                                app:iconPadding="0dp"
+                                app:iconSize="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select permissions and create either a launchable generated test app, a manifest-only install test, or a signed permission repack of one selected APK."
+                            android:textSize="12sp"
+                            android:alpha="0.75"
+                            android:paddingBottom="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Manifest package name"
+                                app:helperText="Auto-fills for generated modes. 3rd Party Apps keeps the selected APK package while this stays as a manifest/snippet reference."
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsPermissionsPackage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:text="dev.perms.test.generated.permissiontest"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:hint="Manifest app label"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsPermissionsLabel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:singleLine="true"
+                                    android:text="PermsTest Permission Test"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fillViewport="true"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkToolsPermissionsDebuggable"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="Debuggable Package" 
+                                    android:textSize="12sp"/>
+
+                                <RadioGroup
+                                    android:id="@+id/rgToolsPermissionsGeneratedMode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.radiobutton.MaterialRadioButton
+                                        android:id="@+id/rdoToolsPermissionsLaunchableApk"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:text="Launchable app / Open"
+                                        android:textSize="12sp" />
+
+                                    <com.google.android.material.radiobutton.MaterialRadioButton
+                                        android:id="@+id/rdoToolsPermissionsManifestOnlyApk"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:text="Manifest-only APK (no UI)"
+                                        android:textSize="12sp" />
+                                </RadioGroup>
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkToolsPermissionsThirdPartyApps"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:checked="false"
+                                    android:text="3rd Party Apps" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsBrowseApk"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Browse APK" 
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:id="@+id/txtToolsPermissionsSelectedApk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Selected APK: PermsTest generated test package"
+                            android:textSize="12sp"
+                            android:alpha="0.75" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Custom permission(s)"
+                                app:helperText="Comma, space, or newline separated"
+                                app:endIconMode="clear_text">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtToolsPermissionsCustom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="56dp"
+                                    android:inputType="textNoSuggestions|textMultiLine"
+                                    android:singleLine="false"
+                                    android:textSize="13sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnToolsPermissionsAddCustom"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:minWidth="0dp"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:text="Add Custom" 
+                                    android:textSize="12sp"/>
+                        </LinearLayout>
+
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fillViewport="true"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsCreateApk"
+                                    android:layout_width="140dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Create New APK" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsCopyManifest"
+                                    android:layout_width="140dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Copy Manifest" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsCommon"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Common" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsSelectAll"
+                                    android:layout_width="110dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Select All" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsSelectNone"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Select None" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsLoadFromApp"
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Load From App"
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsClear"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Clear" 
+                                    android:textSize="12sp"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToolsPermissionsCopy"
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:minWidth="0dp"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:text="Copy Snippet" 
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                        <dev.perms.test.ui.widget.BoundedNestedScrollView
+                            android:id="@+id/svToolsPermissionsTesterList"
+                            android:layout_width="match_parent"
+                            android:layout_height="420dp"
+                            android:layout_marginTop="8dp"
+                            android:fadeScrollbars="false"
+                            android:fillViewport="false"
+                            android:scrollbarStyle="outsideInset">
+
+                            <LinearLayout
+                                android:id="@+id/llToolsPermissionsTesterList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" />
+                        </dev.perms.test.ui.widget.BoundedNestedScrollView>
+
+                        <TextView
+                            android:id="@+id/txtToolsPermissionsStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Launchable app creates a real generated test app. Manifest-only installs a no-code package for manifest/package-manager checks. 3rd Party Apps repacks the selected single APK."
+                            android:textSize="12sp"
+                            android:alpha="0.75" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFileHexEditor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hex Editor"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_hex_editor"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Hex Editor"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Browse or enter a file path, load a bounded file window, inspect aligned offset/hex/ASCII rows, select byte/word/dword/qword ranges, copy/cut/paste bytes, patch hex or ASCII, then save the changed window. SAF-picked files use bounded descriptor reads and writes so large documents are not staged into app storage."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="File path"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsHexPath"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:inputType="textUri|textNoSuggestions"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:text="/sdcard/dev.perms.test/hex_editor.bin"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexBrowse"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Browse" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Offset">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsHexOffset"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="12dp"
+                            android:gravity="center_vertical"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true"
+                            android:text="0x0"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:hint="Length">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsHexLength"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="12dp"
+                            android:gravity="center_vertical"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true"
+                            android:text="0x4000"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexLoad"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Load" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexSave"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Save" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkToolsHexScrollTogether"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Aligned Rows" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkToolsHexMemoryMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="false"
+                        android:text="Memory Mode" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkToolsHexDragSelect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="false"
+                        android:text="Drag Select" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkToolsHexInsertMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="false"
+                        android:text="Insert" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexPrev"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="Prev" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexNext"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Next" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexSelectByte"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Byte" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexSelectWord"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Word" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexSelectDword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Dword" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexSelectQword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Qword" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexCopy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Copy" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexCut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Cut" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexPaste"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Paste" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Edit" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Find hex bytes or text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsHexFind"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="12dp"
+                            android:gravity="center_vertical"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexFind"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Find" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsHexJump"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Jump" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowToolsHexMemoryOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Memory Mode lists running packages only and opens the existing Memory tab Hex Editor for the selected target. File load/save stays disabled while this gate is on so file edits and live memory writes never mix."
+                        android:textSize="12sp"
+                        android:alpha="0.75"
+                        android:paddingBottom="6dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilToolsHexMemoryPackage"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Memory target package"
+                            app:expandedHintEnabled="false"
+                            app:endIconMode="dropdown_menu">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                android:id="@+id/ddToolsHexMemoryPackage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="56dp"
+                                android:includeFontPadding="false"
+                                android:paddingTop="12dp"
+                                android:paddingStart="12dp"
+                                android:paddingBottom="12dp"
+                                android:paddingEnd="64dp"
+                                android:gravity="center_vertical"
+                                android:ellipsize="end"
+                                android:completionThreshold="0"
+                                android:inputType="none"
+                                android:singleLine="true"
+                                android:scrollHorizontally="true"
+                                android:textSize="13sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsHexMemoryRefresh"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="Refresh" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsHexOpenMemoryHex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minWidth="0dp"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="Open Memory Tab Hex Editor" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp">
+
+                    <TextView
+                        android:layout_width="106dp"
+                        android:layout_height="wrap_content"
+                        android:text="Offset"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:layout_width="448dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Hex bytes"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
+
+                    <Space
+                        android:layout_width="48dp"
+                        android:layout_height="1dp" />
+
+                    <TextView
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="ASCII"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="4dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvToolsHexRows"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/colorSurface"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="false"
+                        android:nestedScrollingEnabled="true"
+                        android:overScrollMode="ifContentScrolls"
+                        android:paddingBottom="4dp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="none" />
+
+                    <View
+                        android:id="@+id/fastScrollTouchToolsHexRows"
+                        android:layout_width="36dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:elevation="10dp" />
+
+                    <View
+                        android:id="@+id/fastScrollThumbToolsHexRows"
+                        android:layout_width="14dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end|top"
+                        android:layout_marginEnd="4dp"
+                        android:alpha="0.9"
+                        android:background="@drawable/fast_scroll_thumb"
+                        android:elevation="10dp"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txtToolsHexStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="File mode is ready. Enter a path, then Load a bounded file window."
+                    android:textSize="12sp"
+                    android:alpha="0.75" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardToolsTextEditor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Text Editor"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_text_editor"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Text Editor"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open a text file or external document URI, edit plain text by default, and optionally view the same content with shell, JSON, web, or smali syntax highlighting. Large files use the shared virtual line editor instead of one giant text field."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Text file path or URI"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsTextPath"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:inputType="textUri|textNoSuggestions"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:text="/sdcard/dev.perms.test/text_editor.txt"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsTextBrowse"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Browse" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsTextSyntax"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Syntax mode"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/ddToolsTextSyntax"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:text="Plain Text"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsTextLoad"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Load" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsTextSave"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Save" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsTextClear"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Clear" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsTextBody"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Text content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsTextBody"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scrollbars="none"
+                            android:fadeScrollbars="false"
+                            android:scrollbarStyle="insideInset"
+                            android:overScrollMode="ifContentScrolls"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine|textNoSuggestions"
+                            android:typeface="monospace"
+                            android:textSize="12sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvToolsTextVirtualLines"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:fadeScrollbars="false"
+                        android:overScrollMode="ifContentScrolls"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:scrollbars="horizontal"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/fastScrollTouchToolsText"
+                        android:layout_width="36dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:elevation="10dp" />
+
+                    <View
+                        android:id="@+id/fastScrollThumbToolsText"
+                        android:layout_width="14dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end|top"
+                        android:layout_marginEnd="4dp"
+                        android:alpha="0.9"
+                        android:elevation="10dp"
+                        android:visibility="gone"
+                        android:background="@drawable/fast_scroll_thumb" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txtToolsTextStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Text editor ready."
+                    android:textSize="12sp"
+                    android:alpha="0.80" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:tag="collapsible_groupbox_header">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Save Data Editor"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:tag="tools_popout_save_data_editor"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="Pop out Save Data Editor"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text=""
+                        app:icon="@drawable/ic_popout_open_in_new_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="?attr/colorPrimary"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select a package, load save-edit JSON configs from /sdcard/dev.perms.test/save_data/[package_name], then back up and apply section-scoped byte edits through the selected backend."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilSaveDataPackage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Package"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/ddSaveDataPackage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="16dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:completionThreshold="0"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataLoadConfigs"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:visibility="gone"
+                        android:text="Load" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSaveDataConfig"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint=""
+                    app:expandedHintEnabled="false"
+                    app:endIconMode="dropdown_menu">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/ddSaveDataConfig"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Save-edit config"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="16dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="center_vertical"
+                        android:ellipsize="end"
+                        android:completionThreshold="0"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/rowSaveDataProfileId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilSaveDataProfileId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minWidth="0dp"
+                        android:hint="Profile parameter">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtSaveDataPlayerId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="16dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="12dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataDetectPlayer"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Detect" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Save data file path"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSaveDataPath"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="center_vertical"
+                        android:ellipsize="end"
+                        android:inputType="textNoSuggestions"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkSaveDataAllowAnyFile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Allow any file in save data directory" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkSaveDataAutoBackup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="true"
+                        android:text="Automatically Backup Save Data" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkSaveDataInstallBundled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="true"
+                        android:text="Install bundled configs" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkSaveDataAutoRefresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:checked="true"
+                        android:text="Auto Refresh" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSaveDataPreset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint=""
+                    app:expandedHintEnabled="false"
+                    app:endIconMode="dropdown_menu">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/ddSaveDataPreset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Preset"
+                        android:minHeight="56dp"
+                        android:includeFontPadding="false"
+                        android:paddingTop="12dp"
+                        android:paddingStart="16dp"
+                        android:paddingBottom="12dp"
+                        android:paddingEnd="64dp"
+                        android:gravity="center_vertical"
+                        android:ellipsize="end"
+                        android:completionThreshold="0"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkSaveDataApplyAllInstances"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="Select All" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataScanMatches"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Find Matches" />
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listSaveDataMatches"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="4dp"
+                    android:choiceMode="multipleChoice"
+                    android:dividerHeight="1dp"
+                    android:fastScrollAlwaysVisible="true"
+                    android:fastScrollEnabled="true"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataBackup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Backup" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataRestore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Restore" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataApplyPreset"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Apply Selected Preset" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveDataApplyEnabled"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Apply Enabled Presets" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Config JSON">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSaveDataConfigJson"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:fadeScrollbars="false"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine|textNoSuggestions"
+                        android:overScrollMode="ifContentScrolls"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:typeface="monospace"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtSaveDataStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Save data configs are stored under /sdcard/dev.perms.test/save_data/[package_name]."
+                    android:textSize="12sp"
+                    android:alpha="0.75" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        
+        <!-- Calculator moved to plugin-owned layout surface. -->
+
+
+        
+        <!-- ASCII / Hex Converter moved to plugin-owned layout surface. -->
+
+
+        
+        <!-- Alarms and Timers moved to plugin-owned layout surface. -->
+
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

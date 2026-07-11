@@ -1,0 +1,814 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Embedded Shizuku: declare the same API permission that the upstream manager uses.
+      The server grants this as a runtime permission when apps request Shizuku access.
+      In internal mode, the "manager" and client are the same package.
+    -->
+    <!--
+        NOTE:
+        Do NOT redeclare Shizuku's upstream permission name (moe.shizuku.manager.permission.API_V23).
+        If the user has Shizuku installed, that permission is already owned by the manager package
+        and APK install will fail with INSTALL_FAILED_DUPLICATE_PERMISSION.
+
+        For the embedded/internal Shizuku mode, we use a host-app-scoped permission name.
+     -->
+    <permission
+        android:name="${applicationId}.permission.SHIZUKU_API_V23"
+        android:label="@string/perm_shizuku_api_label"
+        android:description="@string/perm_shizuku_api_desc"
+        android:protectionLevel="signature" />
+
+    <!-- Required to talk to Shizuku / Sui on Android 6.0+ -->
+    <!-- External Shizuku (default mode) -->
+            <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+<uses-permission android:name="moe.shizuku.manager.permission.API_V23" />
+    <!-- Embedded/internal Shizuku (opt-in) -->
+    <uses-permission android:name="${applicationId}.permission.SHIZUKU_API_V23" />
+
+    <!-- Needed to fetch APK URLs from GitHub/update sources and download them. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Optional all-files access for local Android FTP/file fallback paths. Shizuku remains the preferred privileged backend. -->
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+
+    <!-- Used by the LADB overlay helper when running as a foreground service. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Allow listing installed apps (test-bench convenience). Not Play-appropriate. -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+        <!-- Optional: enables the floating LADB pairing helper overlay -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+<application
+        android:name=".PermsTestApp"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Perms Test"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ShizukuSample">
+
+        <!--
+          Required for Shizuku: the provider is how your app acquires the Binder from the Shizuku manager.
+          The INTERACT_ACROSS_USERS_FULL permission protects this provider from access by normal apps.
+        -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".startup.StartupLoadingActivity"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Startup">
+            <layout
+                android:defaultWidth="1200dp"
+                android:defaultHeight="760dp"
+                android:minWidth="900dp"
+                android:minHeight="560dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Main">
+            <layout
+                android:defaultWidth="1200dp"
+                android:defaultHeight="760dp"
+                android:minWidth="900dp"
+                android:minHeight="560dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".vr.MemoryOverlayVrTextInputActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity="${applicationId}.memorypanel"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrDialog" />
+
+        <activity
+            android:name=".vr.MemoryOverlayVrPanelActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.vrpanel"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="520dp"
+                android:minWidth="720dp"
+                android:minHeight="420dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".ui.panel.GenericPanelActivity"
+            android:label="PermsTest Panel"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".plugins.PluginToolPanelActivity"
+            android:label="PermsTest Plugin Tool"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="860dp"
+                android:defaultHeight="660dp"
+                android:minWidth="680dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".kiosk.KioskLauncherActivity"
+            android:label="Kiosk Mode"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Main" />
+
+        <activity
+            android:name=".kiosk.KioskPanelActivity"
+            android:label="Kiosk Mode"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".home.HomeAppTrayPanelActivity"
+            android:label="App Tray"
+            android:exported="false"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".memory.panel.MemoryOverlayPanelActivity"
+            android:label="@string/memory_window_label_editor"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.memorypanel"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".memory.panel.MemoryHexPanelActivity"
+            android:label="@string/memory_window_label_hex"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.memoryhexpanel"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".memory.panel.MemoryDisassemblyPanelActivity"
+            android:label="@string/memory_window_label_disassembly"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.memorydisassemblypanel"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".memory.panel.MemorySpecialToolsPanelActivity"
+            android:label="@string/memory_window_label_special_tools"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.memoryspecialpanel"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.VrPanel">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="720dp"
+                android:minHeight="460dp"
+                android:gravity="center" />
+        </activity>
+
+        <activity
+            android:name=".memory.payload.MemoryPayloadLauncherActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity="${applicationId}.payloadshortcut"
+            android:theme="@style/Theme.ShizukuSample.ShortcutLauncher" />
+
+        <service
+            android:name=".ladb.LadbPairOverlayService"
+            android:exported="false" />
+        <service
+            android:name=".network.ftp.PermsTestFtpService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".network.http.PermsTestHttpService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".network.ssh.PermsTestSshService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".debugging.jobs.PermsTestSmaliJobService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".packages.editor.jobs.ApkEditorJobService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <service
+            android:name=".tools.alarms.PermsTestAlarmTimerService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="tools_alarms_timers" />
+        </service>
+        <service
+            android:name=".memory.overlay.MemoryOverlayService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="memory_overlay" />
+        </service>
+        <service
+            android:name=".shizuku.internal.InternalShizukuPairingAccessibilityService"
+            android:exported="false"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/internal_shizuku_accessibility" />
+        </service>
+
+
+        
+
+        <activity
+            android:name=".tools.intentreceiver.IntentCaptureActivity"
+            android:label="PermsTest Intent Capture"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.intentcapture"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:resizeableActivity="true"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Main">
+            <layout
+                android:defaultWidth="900dp"
+                android:defaultHeight="620dp"
+                android:minWidth="520dp"
+                android:minHeight="420dp"
+                android:gravity="center" />
+        </activity>
+
+
+        <!-- Disabled by default. Tools > Intent Tester > Intent Receiver enables these aliases for live capture tests. -->
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureShareTextAlias"
+            android:label="PermsTest: Share Text"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureShareFilesAlias"
+            android:label="PermsTest: Share Files"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureOpenTextAlias"
+            android:label="PermsTest: Open Text"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="text/*" />
+                <data android:scheme="file" android:mimeType="text/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureOpenAnyFileAlias"
+            android:label="PermsTest: Open Any File"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="*/*" />
+                <data android:scheme="file" android:mimeType="*/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCapturePackageArchiveAlias"
+            android:label="PermsTest: APK Archives"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="application/vnd.android.package-archive" />
+                <data android:scheme="content" android:mimeType="application/zip" />
+                <data android:scheme="file" android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureImagesAlias"
+            android:label="PermsTest: Images"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="image/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureVideoAlias"
+            android:label="PermsTest: Video"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="video/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureAudioAlias"
+            android:label="PermsTest: Audio"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="audio/*" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureDocumentsAlias"
+            android:label="PermsTest: Documents"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="application/pdf" />
+                <data android:scheme="content" android:mimeType="application/json" />
+                <data android:scheme="content" android:mimeType="application/xml" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureWebLinksAlias"
+            android:label="PermsTest: Web Links"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureYouTubeLinksAlias"
+            android:label="PermsTest: YouTube Links"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.youtube.com" />
+                <data android:scheme="https" android:host="m.youtube.com" />
+                <data android:scheme="https" android:host="music.youtube.com" />
+                <data android:scheme="https" android:host="youtu.be" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureGitHubLinksAlias"
+            android:label="PermsTest: GitHub Links"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="github.com" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureMailtoAlias"
+            android:label="PermsTest: Mailto"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="mailto" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureMarketLinksAlias"
+            android:label="PermsTest: Market Links"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="market" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureGeoMapsAlias"
+            android:label="PermsTest: Geo Maps"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="geo" />
+                <data android:scheme="google.navigation" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureTelSmsAlias"
+            android:label="PermsTest: Tel SMS"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+                <data android:scheme="sms" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCaptureCalendarInsertAlias"
+            android:label="PermsTest: Calendar Insert"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/event" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".tools.intentreceiver.IntentCapturePermsTestSchemeAlias"
+            android:label="PermsTest: Custom Scheme"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".tools.intentreceiver.IntentCaptureActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="perms-test" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".tools.text.TextFileOpenActivity"
+            android:label="PermsTest Text Editor"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.textopen"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="text/*" />
+                <data android:scheme="content" android:mimeType="application/json" />
+                <data android:scheme="content" android:mimeType="application/xml" />
+                <data android:scheme="content" android:mimeType="application/javascript" />
+                <data android:scheme="content" android:mimeType="application/octet-stream" />
+                <data android:scheme="file" android:mimeType="text/*" />
+                <data android:scheme="file" android:mimeType="application/json" />
+                <data android:scheme="file" android:mimeType="application/xml" />
+                <data android:scheme="file" android:mimeType="application/javascript" />
+                <data android:scheme="file" android:mimeType="application/octet-stream" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:pathPattern=".*\.txt" />
+                <data android:scheme="content" android:pathPattern=".*\.log" />
+                <data android:scheme="content" android:pathPattern=".*\.md" />
+                <data android:scheme="content" android:pathPattern=".*\.json" />
+                <data android:scheme="content" android:pathPattern=".*\.xml" />
+                <data android:scheme="content" android:pathPattern=".*\.html" />
+                <data android:scheme="content" android:pathPattern=".*\.htm" />
+                <data android:scheme="content" android:pathPattern=".*\.css" />
+                <data android:scheme="content" android:pathPattern=".*\.js" />
+                <data android:scheme="content" android:pathPattern=".*\.sh" />
+                <data android:scheme="content" android:pathPattern=".*\.smali" />
+                <data android:scheme="file" android:pathPattern=".*\.txt" />
+                <data android:scheme="file" android:pathPattern=".*\.log" />
+                <data android:scheme="file" android:pathPattern=".*\.md" />
+                <data android:scheme="file" android:pathPattern=".*\.json" />
+                <data android:scheme="file" android:pathPattern=".*\.xml" />
+                <data android:scheme="file" android:pathPattern=".*\.html" />
+                <data android:scheme="file" android:pathPattern=".*\.htm" />
+                <data android:scheme="file" android:pathPattern=".*\.css" />
+                <data android:scheme="file" android:pathPattern=".*\.js" />
+                <data android:scheme="file" android:pathPattern=".*\.sh" />
+                <data android:scheme="file" android:pathPattern=".*\.smali" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".packages.FileOpenInstallActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.fileopen"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+            android:theme="@style/Theme.ShizukuSample.Transparent">
+        </activity>
+<activity-alias
+            android:name=".LauncherAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity=".startup.StartupLoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".HomeAlias"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".kiosk.KioskLauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+    
+        <activity-alias
+            android:name=".FileOpenAlias"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity=".packages.FileOpenInstallActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:mimeType="application/vnd.android.package-archive" />
+                <data android:scheme="content" android:mimeType="application/zip" />
+                <data android:scheme="content" android:mimeType="application/x-zip" />
+                <data android:scheme="content" android:mimeType="application/x-zip-compressed" />
+                <data android:scheme="content" android:mimeType="application/octet-stream" />
+                <data android:scheme="content" android:mimeType="application/apkm" />
+                <data android:scheme="content" android:mimeType="application/vnd.apkm" />
+                <data android:scheme="content" android:mimeType="application/x-apkm" />
+                <data android:scheme="content" android:mimeType="application/apks" />
+                <data android:scheme="content" android:mimeType="application/vnd.apks" />
+                <data android:scheme="content" android:mimeType="application/x-apks" />
+                <data android:scheme="content" android:mimeType="application/xapk" />
+                <data android:scheme="content" android:mimeType="application/vnd.xapk" />
+                <data android:scheme="content" android:mimeType="application/x-xapk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" android:mimeType="application/vnd.android.package-archive" />
+                <data android:scheme="file" android:mimeType="application/zip" />
+                <data android:scheme="file" android:mimeType="application/x-zip" />
+                <data android:scheme="file" android:mimeType="application/x-zip-compressed" />
+                <data android:scheme="file" android:mimeType="application/octet-stream" />
+                <data android:scheme="file" android:mimeType="application/apkm" />
+                <data android:scheme="file" android:mimeType="application/vnd.apkm" />
+                <data android:scheme="file" android:mimeType="application/x-apkm" />
+                <data android:scheme="file" android:mimeType="application/apks" />
+                <data android:scheme="file" android:mimeType="application/vnd.apks" />
+                <data android:scheme="file" android:mimeType="application/x-apks" />
+                <data android:scheme="file" android:mimeType="application/xapk" />
+                <data android:scheme="file" android:mimeType="application/vnd.xapk" />
+                <data android:scheme="file" android:mimeType="application/x-xapk" />
+            </intent-filter>
+
+            <!-- Some app stores / downloaders use INSTALL_PACKAGE rather than a VIEW intent. -->
+            <intent-filter>
+                <action android:name="android.intent.action.INSTALL_PACKAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/vnd.android.package-archive" />
+                <data android:scheme="file" android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" android:pathPattern=".*\.apk" />
+                <data android:scheme="content" android:pathPattern=".*\.apks" />
+                <data android:scheme="content" android:pathPattern=".*\.apkm" />
+                <data android:scheme="content" android:pathPattern=".*\.xapk" />
+                <data android:scheme="content" android:pathPattern=".*\.zip" />
+                <data android:scheme="content" android:pathPattern=".*\.smali" />
+                <data android:scheme="content" android:mimeType="text/plain" android:pathPattern=".*\.smali" />
+                <data android:scheme="content" android:mimeType="text/x-smali" android:pathPattern=".*\.smali" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" android:pathPattern=".*\.apk" />
+                <data android:scheme="file" android:pathPattern=".*\.apks" />
+                <data android:scheme="file" android:pathPattern=".*\.apkm" />
+                <data android:scheme="file" android:pathPattern=".*\.xapk" />
+                <data android:scheme="file" android:pathPattern=".*\.zip" />
+                <data android:scheme="file" android:pathPattern=".*\.smali" />
+                <data android:scheme="file" android:mimeType="text/plain" android:pathPattern=".*\.smali" />
+                <data android:scheme="file" android:mimeType="text/x-smali" android:pathPattern=".*\.smali" />
+            </intent-filter>
+        </activity-alias>
+
+
+        <receiver
+            android:name=".ladb.LadbPairInputReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name="dev.perms.test.shizuku.internal.InternalShizukuPairInputReceiver"
+            android:exported="false" />
+
+        <service
+            android:name="dev.perms.test.shizuku.internal.InternalShizukuAdbMdnsService"
+            android:exported="false"
+            android:foregroundServiceType="shortService" />
+
+<service
+    android:name="dev.perms.test.shizuku.internal.InternalAdbService"
+    android:exported="false"
+    android:process=":internal_adb" />
+
+    </application>
+
+</manifest>

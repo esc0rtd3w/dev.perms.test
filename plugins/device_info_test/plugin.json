@@ -1,0 +1,31 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "device_info_test",
+  "name": "Device Info Test",
+  "version": "1.0.0",
+  "author": "PermsTest",
+  "description": "Bundled native plugin that displays Android build, device, ABI, display, and storage details.",
+  "comments": "Small test plugin for validating bundled restore, native action dispatch, syntax highlighting, and optional Run In Window behavior.",
+  "entry": {
+    "type": "native-actions",
+    "notes": "Actions map to handlers registered by dev.perms.test.plugins.PluginActionRegistry."
+  },
+  "actions": [
+    {
+      "id": "show_device_info",
+      "title": "Show Device Info",
+      "description": "Collect a compact build/device report using getprop, uname, wm, and df.",
+      "type": "native",
+      "handler": "device_info_dialog",
+      "syntax": "properties"
+    }
+  ],
+  "icon": "icon.png",
+  "runtime": "trusted_native",
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "trusted_native"
+  ]
+}

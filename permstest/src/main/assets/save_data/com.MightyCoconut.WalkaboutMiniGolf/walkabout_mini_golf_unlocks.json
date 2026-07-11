@@ -1,0 +1,77 @@
+{
+  "schema": "perms_test_save_data_editor",
+  "version": 1,
+  "package_name": "com.MightyCoconut.WalkaboutMiniGolf",
+  "package_folder": "com.MightyCoconut.WalkaboutMiniGolf",
+  "name": "Walkabout Mini Golf - Save Unlocks",
+  "save_data_path_template": "/sdcard/Android/data/com.MightyCoconut.WalkaboutMiniGolf/files/Profiles/Oculus/{player_id}/Profile_Default.data",
+  "default_apply_to_all_instances": true,
+  "profile_parameter_name": "Walkabout profile ID",
+  "show_profile_field": false,
+  "auto_detect_profile_id": true,
+  "player_id_source": {
+    "type": "directory_glob",
+    "glob": "/sdcard/Android/data/com.MightyCoconut.WalkaboutMiniGolf/files/Profiles/Oculus/*"
+  },
+  "notes": "Section-scoped byte edits converted from the original WMG unlocker/payloads. Scan matches before applying if you want to patch selected instances only.",
+  "presets": [
+    {
+      "name": "Unlock Balls",
+      "enabled": true,
+      "apply_to_all_instances": true,
+      "edits": [
+        {
+          "name": "Balls HasValue -> true",
+          "section_start_ascii": "BallsFound",
+          "section_end_ascii": "BallPositions",
+          "section_start_hex": "42616C6C73466F756E64",
+          "section_end_hex": "42616C6C506F736974696F6E73",
+          "original_hex": "48617356616C7565000009",
+          "patched_hex": "48617356616C7565000109",
+          "apply_to_all_instances": true,
+          "max_changes": 99999
+        },
+        {
+          "name": "Balls Value clear FF",
+          "section_start_ascii": "BallsFound",
+          "section_end_ascii": "BallPositions",
+          "section_start_hex": "42616C6C73466F756E64",
+          "section_end_hex": "42616C6C506F736974696F6E73",
+          "original_hex": "56616C756500FFFFFFFFFFFFFFFF08",
+          "patched_hex": "56616C756500000000000000000008",
+          "apply_to_all_instances": true,
+          "max_changes": 99999
+        }
+      ]
+    },
+    {
+      "name": "Unlock Putters",
+      "enabled": true,
+      "apply_to_all_instances": true,
+      "edits": [
+        {
+          "name": "Putters Value -> true",
+          "section_start_ascii": "PuttersUnlocked",
+          "section_end_ascii": "CourseData",
+          "section_start_hex": "50757474657273556E6C6F636B6564",
+          "section_end_hex": "436F7572736544617461",
+          "original_hex": "56616C7565000008",
+          "patched_hex": "56616C7565000108",
+          "apply_to_all_instances": true,
+          "max_changes": 99999
+        },
+        {
+          "name": "Putters HasValue -> true",
+          "section_start_ascii": "PuttersUnlocked",
+          "section_end_ascii": "CourseData",
+          "section_start_hex": "50757474657273556E6C6F636B6564",
+          "section_end_hex": "436F7572736544617461",
+          "original_hex": "48617356616C7565000009",
+          "patched_hex": "48617356616C7565000109",
+          "apply_to_all_instances": true,
+          "max_changes": 99999
+        }
+      ]
+    }
+  ]
+}

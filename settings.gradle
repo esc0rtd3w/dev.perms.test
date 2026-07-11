@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'PermsTest'
+
+include ':aidl', ':shared', ':api', ':provider', ':permstest'
+
+// Embedded Shizuku (internal mode)
+include ':common', ':starter', ':rish', ':server-shared', ':server'
+include ':internal_server'

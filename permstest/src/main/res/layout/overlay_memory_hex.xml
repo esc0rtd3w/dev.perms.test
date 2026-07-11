@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/memoryHexOverlayRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMemoryHexOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:strokeColor="?attr/colorOutline"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:id="@+id/overlayMemoryHexHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Hex Editor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnOverlayMemoryHexResetWindow"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/memory_overlay_header_button"
+                    android:clickable="true"
+                    android:contentDescription="Reset hex editor window"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="↻"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btnOverlayMemoryHexClose"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/memory_overlay_header_button"
+                    android:clickable="true"
+                    android:contentDescription="Close hex editor"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="X"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtOverlayMemoryHexAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textNoSuggestions"
+                        android:minHeight="34dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textSize="10sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:hint="Length">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtOverlayMemoryHexLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:minHeight="34dp"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text="1024"
+                        android:textSize="10sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexAlignment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexLive"
+                    android:layout_width="62dp"
+                    android:layout_height="28dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Live"
+                    android:textSize="9sp" />
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexAlign"
+                    android:layout_width="68dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="2dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Align"
+                    android:textSize="9sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilOverlayMemoryHexAlignMode"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:hint="Alignment">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/ddOverlayMemoryHexAlignMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="none"
+                        android:minHeight="32dp"
+                        android:paddingStart="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="4dp"
+                        android:singleLine="true"
+                        android:text="16 bytes"
+                        android:textSize="9sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexRead"
+                    android:layout_width="76dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="4dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="0dp"
+                    android:text="Read"
+                    android:textSize="10sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexWrite"
+                    android:layout_width="76dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="6dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="4dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="0dp"
+                    android:text="Write"
+                    android:textSize="10sp"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexWriteWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:gravity="center_vertical"
+                    android:text="Selection Size"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexWriteByte"
+                    android:layout_width="64dp"
+                    android:layout_height="28dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Byte"
+                    android:textSize="9sp" />
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexWriteWord"
+                    android:layout_width="64dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="2dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Word"
+                    android:textSize="9sp" />
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexWriteDword"
+                    android:layout_width="74dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="2dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:checked="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Dword"
+                    android:textSize="9sp" />
+
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexWriteQword"
+                    android:layout_width="74dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="2dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Qword"
+                    android:textSize="9sp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexSelectionEdit"
+                    android:layout_width="54dp"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="Edit the current highlighted hex or ASCII selection"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Edit"
+                    android:textSize="10sp"
+                    app:cornerRadius="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center_vertical"
+                    android:text="Slide"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexSelectionMinus"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:contentDescription="Move current hex selection left one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="&lt;"
+                    android:textSize="10sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexSelectionPlus"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="Move current hex selection right one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="&gt;"
+                    android:textSize="10sp"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexPayload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Drag Select changes interaction mode only. Payload storage/apply is always available,
+                     but payload buttons are hidden until this is checked so Tap mode stays uncluttered. -->
+                <CheckBox
+                    android:id="@+id/chkOverlayMemoryHexPayloads"
+                    android:layout_width="96dp"
+                    android:layout_height="28dp"
+                    android:buttonTint="?attr/colorPrimary"
+                    android:gravity="center_vertical"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="2dp"
+                    android:text="Drag Select"
+                    android:textSize="9sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadMarkStart"
+                    android:visibility="gone"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Mark current byte as payload selection start"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Set S"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadMarkEnd"
+                    android:visibility="gone"
+                    android:layout_width="48dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="Mark current byte as payload selection end"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Set E"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadFind"
+                    android:visibility="gone"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Find"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadSave"
+                    android:visibility="gone"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Save"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadMask"
+                    android:visibility="gone"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Mark selected payload bytes as wildcard mask bytes"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Mask"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadLoad"
+                    android:visibility="gone"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Load"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadWrite"
+                    android:visibility="gone"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Write"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexPayloadSection"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="0.75"
+                    android:text="Section marker uses current hex or ASCII selection."
+                    android:textSize="8sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadSectionStart"
+                    android:layout_width="56dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Use current drag selection as payload section start marker"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Sec S"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadSectionEnd"
+                    android:layout_width="56dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Use current drag selection as payload section end marker"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Sec E"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <!-- Apply searches original_hex and writes patched_hex; Apply All does the same for every
+                 complete JSON file in the active package folder. Hidden while Drag Select is off. -->
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexPayloadApply"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="0.75"
+                    android:text="Payload apply uses original bytes to find, then writes patched bytes."
+                    android:textSize="8sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadStartMinus"
+                    android:visibility="gone"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Move payload selection start back one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="S-"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadStartPlus"
+                    android:visibility="gone"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="Move payload selection start forward one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="S+"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadEndMinus"
+                    android:visibility="gone"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="Move payload selection end back one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="E-"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadEndPlus"
+                    android:visibility="gone"
+                    android:layout_width="34dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="3dp"
+                    android:contentDescription="Move payload selection end forward one byte"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="1dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="1dp"
+                    android:paddingBottom="0dp"
+                    android:text="E+"
+                    android:textSize="8sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadApply"
+                    android:layout_width="70dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Apply"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOverlayMemoryHexPayloadApplyAll"
+                    android:layout_width="82dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="4dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="2dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="0dp"
+                    android:text="Apply All"
+                    android:textSize="9sp"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowOverlayMemoryHexOutputScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="6dp"
+                android:clipChildren="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtOverlayMemoryHexOutput"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minHeight="250dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="monospace"
+                    android:gravity="top|start"
+                    android:hint="Live hex view. 16 bytes per row with ASCII on the right."
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:linksClickable="true"
+                    android:textIsSelectable="false"
+                    android:scrollHorizontally="true"
+                    android:padding="6dp"
+                    android:scrollbars="vertical"
+                    android:scrollbarFadeDuration="0"
+                    android:scrollbarSize="1dp"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbarThumbVertical="@drawable/memory_scrollbar_transparent"
+                    android:scrollbarTrackVertical="@drawable/memory_scrollbar_transparent"
+                    android:textSize="10sp" />
+
+                <FrameLayout
+                    android:id="@+id/frameOverlayMemoryHexScrollThumb"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:clipChildren="false"
+                    android:visibility="gone">
+
+                    <SeekBar
+                        android:id="@+id/seekOverlayMemoryHexScroll"
+                        android:layout_width="250dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:max="1000"
+                        android:progress="0"
+                        android:rotation="90" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/overlayMemoryHexResizeHandle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:alpha="0.82"
+        android:background="@android:color/transparent"
+        android:contentDescription="Resize hex editor"
+        android:src="@drawable/memory_overlay_resize_grip" />
+</FrameLayout>

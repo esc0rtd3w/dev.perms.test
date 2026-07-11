@@ -1,0 +1,29 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "declarative_api_demo_plugin",
+  "name": "Declarative Host API Demo",
+  "version": "1.0",
+  "author": "PermsTest",
+  "runtime": "declarative",
+  "entry": "ui.json",
+  "icon": "icon.png",
+  "description": "Self-contained declarative plugin that demonstrates safe PermsTest host APIs without shell or trusted code, including calculator, converter, text, JSON, URL, hash, Base64, and hex helpers.",
+  "comments": "Uses calculator.evaluateInteger, converter.textToBytes, converter.bytesToText, text.*, json.*, url.*, hash.sha256, and encoding.base64*/encoding.hex* through the declarative runtime. All actions are explicit user taps and remain inside host-owned API mappings.",
+  "actions": [
+    {
+      "id": "open_api_demo",
+      "title": "Open API Demo UI",
+      "description": "Render ui.json and exercise safe host API mappings from a self-contained declarative plugin.",
+      "type": "declarative_ui",
+      "handler": "ui.json",
+      "target": "ui.json"
+    }
+  ],
+  "windowStyle": "full",
+  "windowFit": "current",
+  "capabilities": [
+    "declarative_ui",
+    "host_api"
+  ]
+}

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutline"
+            app:cardBackgroundColor="?attr/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alarms and Timers"
+                    android:textStyle="bold"
+                    android:paddingBottom="2dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Basic alarm clock, countdown timer, and stopwatch tools. Active alarms and timers run through a foreground service with an ongoing notification."
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alarm Clock"
+                    android:textStyle="bold"
+                    android:paddingBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Label">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsAlarmName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:singleLine="true"
+                            android:inputType="textCapSentences|textNoSuggestions"
+                            android:text="Alarm"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:hint="Time (HH:mm)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtToolsAlarmTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:inputType="time"
+                            android:text="07:00"
+                            android:textSize="13sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkToolsAlarmRepeatDaily"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Repeat daily" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilToolsAlarmSound"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:hint="Alarm sound"
+                        app:expandedHintEnabled="false"
+                        app:endIconMode="dropdown_menu">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/ddToolsAlarmSound"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="56dp"
+                            android:includeFontPadding="false"
+                            android:paddingTop="12dp"
+                            android:paddingStart="12dp"
+                            android:paddingBottom="12dp"
+                            android:paddingEnd="64dp"
+                            android:gravity="center_vertical"
+                            android:ellipsize="end"
+                            android:completionThreshold="0"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:textSize="13sp"
+                            android:text="Default alarm" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilToolsAlarmCustomSound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Custom sound URI"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtToolsAlarmCustomSound"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:singleLine="true"
+                        android:inputType="textUri|textNoSuggestions"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txtToolsAlarmStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="No alarm active."
+                        android:textSize="12sp"
+                        android:alpha="0.75" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsAlarmStart"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:text="Start" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsAlarmStop"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:text="Stop" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/darker_gray"
+                    android:alpha="0.35" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Timer"
+                    android:textStyle="bold"
+                    android:paddingBottom="4dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="H"
+                                android:textSize="11sp"
+                                android:alpha="0.75" />
+
+                            <NumberPicker
+                                android:id="@+id/npToolsTimerHours"
+                                android:layout_width="64dp"
+                                android:layout_height="96dp"
+                                android:descendantFocusability="blocksDescendants" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="M"
+                                android:textSize="11sp"
+                                android:alpha="0.75" />
+
+                            <NumberPicker
+                                android:id="@+id/npToolsTimerMinutes"
+                                android:layout_width="64dp"
+                                android:layout_height="96dp"
+                                android:descendantFocusability="blocksDescendants" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="S"
+                                android:textSize="11sp"
+                                android:alpha="0.75" />
+
+                            <NumberPicker
+                                android:id="@+id/npToolsTimerSeconds"
+                                android:layout_width="64dp"
+                                android:layout_height="96dp"
+                                android:descendantFocusability="blocksDescendants" />
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilToolsTimerSound"
+                            android:layout_width="190dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:hint="Timer sound"
+                            app:expandedHintEnabled="false"
+                            app:endIconMode="dropdown_menu">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                android:id="@+id/ddToolsTimerSound"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="56dp"
+                                android:includeFontPadding="false"
+                                android:paddingTop="12dp"
+                                android:paddingStart="12dp"
+                                android:paddingBottom="12dp"
+                                android:paddingEnd="64dp"
+                                android:gravity="center_vertical"
+                                android:ellipsize="end"
+                                android:completionThreshold="0"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:singleLine="true"
+                                android:scrollHorizontally="true"
+                                android:textSize="13sp"
+                                android:text="Default alarm" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/chkToolsTimerTapToStop"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:checked="false"
+                            android:maxLines="2"
+                            android:text="Tap Notification To Stop"
+                            android:textSize="12sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsTimerStart"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:text="Start" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToolsTimerStop"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="0dp"
+                            android:text="Stop" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilToolsTimerCustomSound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Custom sound URI"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtToolsTimerCustomSound"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="56dp"
+                        android:singleLine="true"
+                        android:inputType="textUri|textNoSuggestions"
+                        android:textSize="13sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtToolsTimerStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="No timer active."
+                    android:textSize="12sp"
+                    android:alpha="0.75" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/darker_gray"
+                    android:alpha="0.35" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stopwatch"
+                    android:textStyle="bold"
+                    android:paddingBottom="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txtToolsStopwatchTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="00:00:00.000"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsStopwatchStart"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:text="Start" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsStopwatchPause"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:text="Stop" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnToolsStopwatchReset"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="0dp"
+                        android:text="Reset" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtToolsStopwatchStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Stopwatch is idle."
+                    android:textSize="12sp"
+                    android:alpha="0.75" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,29 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "declarative_demo_plugin",
+  "name": "Declarative UI Demo",
+  "version": "1.0",
+  "author": "PermsTest",
+  "runtime": "declarative",
+  "entry": "ui.json",
+  "icon": "icon.png",
+  "description": "Self-contained JSON-driven plugin that renders fields and buttons without a native hardcoded handler.",
+  "comments": "Demonstrates declarative plugins. PermsTest parses ui.json and wires actions through the generic plugin API.",
+  "actions": [
+    {
+      "id": "open",
+      "title": "Open Demo UI",
+      "description": "Render the plugin-owned ui.json with the declarative runtime.",
+      "type": "declarative_ui",
+      "handler": "ui.json",
+      "target": "ui.json"
+    }
+  ],
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "declarative_ui",
+    "host_api"
+  ]
+}

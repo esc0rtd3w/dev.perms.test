@@ -1,0 +1,1 @@
+Declarative Host API Demo bundled plugin for PermsTest. Demonstrates safe declarative host APIs for calculator, text/byte conversion, text helpers, SHA-256 hashing, Base64/hex encode/decode, JSON formatting, URL encoding, and text search/replace. It does not run shell commands or trusted code.

@@ -1,0 +1,23 @@
+{
+  "schema": "perms_test_memory_hex_payload",
+  "version": 1,
+  "package_name": "com.fingersoft.hillclimb",
+  "package_folder": "com.fingersoft.hillclimb",
+  "name": "adskips_enabled",
+  "file_name": "adskips_enabled.json",
+  "created_at": "20260512_030058",
+  "original_hex": "6164736B6970735F656E61626C656400A0D1AD70000000000A0000000000000066616C7365",
+  "original_ascii_preview": "adskips_enabled....p............false",
+  "original_address": "0x163fce40",
+  "address": "0x163fce40",
+  "length": 37,
+  "updated_at": "20260514_014900",
+  "patched_hex": "6164736B6970735F656E61626C656400A0D1AD70000000000A000000000000007472756500",
+  "patched_ascii_preview": "adskips_enabled....p............true.",
+  "patched_address": "0x163fce40",
+  "enabled": true,
+  "preserve_mask_wildcards": true,
+  "mask_hex": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000000000FFFFFFFFFF",
+  "mask_wildcard_count": 17,
+  "mask_note": "FF bytes are compared. 00 bytes are wildcard bytes ignored by payload Find/Apply."
+}

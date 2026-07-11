@@ -1,0 +1,558 @@
+{
+  "title": "Declarative Host API Demo",
+  "description": "This demo uses host-owned API mappings from ui.json. It does not run shell commands or trusted code.",
+  "controls": [
+    {
+      "type": "section",
+      "label": "Calculator API",
+      "controls": [
+        {
+          "type": "input",
+          "id": "expr",
+          "label": "Integer expression",
+          "default": "0x10 + 25"
+        },
+        {
+          "type": "dropdown",
+          "id": "base",
+          "label": "Input base",
+          "values": [
+            "Hex",
+            "Dec",
+            "Oct",
+            "Bin"
+          ],
+          "default": "Hex"
+        },
+        {
+          "type": "output",
+          "id": "calcStatus",
+          "label": "Calculator status",
+          "text": "Tap Evaluate."
+        },
+        {
+          "type": "output",
+          "id": "hex",
+          "label": "Hex output",
+          "text": "Hex: \u2014"
+        },
+        {
+          "type": "output",
+          "id": "dec",
+          "label": "Decimal output",
+          "text": "Dec: \u2014"
+        },
+        {
+          "type": "output",
+          "id": "oct",
+          "label": "Octal output",
+          "text": "Oct: \u2014"
+        },
+        {
+          "type": "output",
+          "id": "bin",
+          "label": "Binary output",
+          "text": "Bin: \u2014"
+        },
+        {
+          "type": "button",
+          "id": "evalButton",
+          "text": "Evaluate Integer",
+          "action": {
+            "type": "api",
+            "name": "calculator.evaluateInteger",
+            "input": "expr",
+            "base": "base",
+            "status": "calcStatus",
+            "outputs": {
+              "hex": "hex",
+              "dec": "dec",
+              "oct": "oct",
+              "bin": "bin"
+            },
+            "then": {
+              "type": "setText",
+              "target": "calcStatus",
+              "value": "Calculated ${expr} as ${base}."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "label": "Text / byte converter APIs",
+      "controls": [
+        {
+          "type": "input",
+          "id": "text",
+          "label": "Text input",
+          "default": "PermsTest"
+        },
+        {
+          "type": "dropdown",
+          "id": "encoding",
+          "label": "Encoding",
+          "values": [
+            "UTF-8",
+            "ASCII",
+            "UTF-16",
+            "UTF-16 Little Endian",
+            "UTF-16 Big Endian"
+          ],
+          "default": "UTF-8"
+        },
+        {
+          "type": "dropdown",
+          "id": "type",
+          "label": "Value type",
+          "values": [
+            "Hexadecimal",
+            "Decimal",
+            "Octal",
+            "Binary"
+          ],
+          "default": "Hexadecimal"
+        },
+        {
+          "type": "dropdown",
+          "id": "delimiter",
+          "label": "Delimiter",
+          "values": [
+            "Space",
+            "Comma",
+            "None"
+          ],
+          "default": "Space"
+        },
+        {
+          "type": "multiline",
+          "id": "values",
+          "label": "Byte values",
+          "default": ""
+        },
+        {
+          "type": "multiline",
+          "id": "roundtrip",
+          "label": "Round-trip text",
+          "default": ""
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "Text \u2192 Bytes",
+              "action": {
+                "type": "api",
+                "name": "converter.textToBytes",
+                "input": "text",
+                "encoding": "encoding",
+                "valueType": "type",
+                "delimiter": "delimiter",
+                "output": "values"
+              }
+            },
+            {
+              "text": "Bytes \u2192 Text",
+              "action": {
+                "type": "api",
+                "name": "converter.bytesToText",
+                "input": "values",
+                "encoding": "encoding",
+                "valueType": "type",
+                "output": "roundtrip"
+              }
+            },
+            {
+              "text": "Clear",
+              "action": {
+                "type": "sequence",
+                "steps": [
+                  {
+                    "type": "clear",
+                    "target": "values"
+                  },
+                  {
+                    "type": "clear",
+                    "target": "roundtrip"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "label": "Text helper APIs",
+      "controls": [
+        {
+          "type": "input",
+          "id": "helperText",
+          "label": "Text helper input",
+          "default": "  PermsTest Plugins  "
+        },
+        {
+          "type": "output",
+          "id": "textOutput",
+          "label": "Text helper output",
+          "text": "Tap a helper action."
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "Uppercase",
+              "action": {
+                "type": "api",
+                "name": "text.uppercase",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Lowercase",
+              "action": {
+                "type": "api",
+                "name": "text.lowercase",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Trim",
+              "action": {
+                "type": "api",
+                "name": "text.trim",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Reverse",
+              "action": {
+                "type": "api",
+                "name": "text.reverse",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Length",
+              "action": {
+                "type": "api",
+                "name": "text.length",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Word Count",
+              "action": {
+                "type": "api",
+                "name": "text.wordCount",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "Is Blank?",
+              "action": {
+                "type": "api",
+                "name": "text.isBlank",
+                "input": "helperText",
+                "output": "textOutput"
+              }
+            },
+            {
+              "text": "SHA-256",
+              "action": {
+                "type": "api",
+                "name": "hash.sha256",
+                "input": "helperText",
+                "encoding": "encoding",
+                "output": "textOutput"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "label": "Base64 / Hex APIs",
+      "controls": [
+        {
+          "type": "input",
+          "id": "base64Plain",
+          "label": "Plain text",
+          "default": "PermsTest host API"
+        },
+        {
+          "type": "multiline",
+          "id": "base64Value",
+          "label": "Base64 value",
+          "default": ""
+        },
+        {
+          "type": "multiline",
+          "id": "base64Roundtrip",
+          "label": "Decoded text",
+          "default": ""
+        },
+        {
+          "type": "multiline",
+          "id": "hexValue",
+          "label": "Hex value",
+          "default": ""
+        },
+        {
+          "type": "multiline",
+          "id": "hexRoundtrip",
+          "label": "Hex decoded text",
+          "default": ""
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "Base64 Encode",
+              "action": {
+                "type": "api",
+                "name": "encoding.base64Encode",
+                "input": "base64Plain",
+                "encoding": "encoding",
+                "output": "base64Value"
+              }
+            },
+            {
+              "text": "Base64 Decode",
+              "action": {
+                "type": "api",
+                "name": "encoding.base64Decode",
+                "input": "base64Value",
+                "encoding": "encoding",
+                "output": "base64Roundtrip"
+              }
+            },
+            {
+              "text": "Hex Encode",
+              "action": {
+                "type": "api",
+                "name": "encoding.hexEncode",
+                "input": "base64Plain",
+                "encoding": "encoding",
+                "delimiter": "delimiter",
+                "output": "hexValue"
+              }
+            },
+            {
+              "text": "Hex Decode",
+              "action": {
+                "type": "api",
+                "name": "encoding.hexDecode",
+                "input": "hexValue",
+                "encoding": "encoding",
+                "output": "hexRoundtrip"
+              }
+            },
+            {
+              "text": "Clear Encodings",
+              "action": {
+                "type": "sequence",
+                "steps": [
+                  {
+                    "type": "clear",
+                    "target": "base64Value"
+                  },
+                  {
+                    "type": "clear",
+                    "target": "base64Roundtrip"
+                  },
+                  {
+                    "type": "clear",
+                    "target": "hexValue"
+                  },
+                  {
+                    "type": "clear",
+                    "target": "hexRoundtrip"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "label": "JSON / URL / replace APIs",
+      "controls": [
+        {
+          "type": "input",
+          "id": "replaceInput",
+          "label": "Replace input",
+          "default": "PermsTest plugin host APIs"
+        },
+        {
+          "type": "input",
+          "id": "query",
+          "label": "Contains query",
+          "default": "plugin"
+        },
+        {
+          "type": "input",
+          "id": "search",
+          "label": "Replace search",
+          "default": "plugin"
+        },
+        {
+          "type": "input",
+          "id": "replacement",
+          "label": "Replace with",
+          "default": "declarative"
+        },
+        {
+          "type": "output",
+          "id": "replaceOutput",
+          "label": "Text utility output",
+          "text": "Tap Contains or Replace."
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "Contains?",
+              "action": {
+                "type": "api",
+                "name": "text.contains",
+                "input": "replaceInput",
+                "query": "query",
+                "output": "replaceOutput"
+              }
+            },
+            {
+              "text": "Replace",
+              "action": {
+                "type": "api",
+                "name": "text.replace",
+                "input": "replaceInput",
+                "search": "search",
+                "replacement": "replacement",
+                "output": "replaceOutput"
+              }
+            },
+            {
+              "text": "Line Count",
+              "action": {
+                "type": "api",
+                "name": "text.lineCount",
+                "input": "jsonInput",
+                "output": "replaceOutput"
+              }
+            }
+          ]
+        },
+        {
+          "type": "multiline",
+          "id": "jsonInput",
+          "label": "JSON input",
+          "default": "{\"plugin\":\"PermsTest\",\"safe\":true,\"count\":3}"
+        },
+        {
+          "type": "multiline",
+          "id": "jsonOutput",
+          "label": "JSON output",
+          "default": ""
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "Pretty JSON",
+              "action": {
+                "type": "api",
+                "name": "json.pretty",
+                "input": "jsonInput",
+                "output": "jsonOutput"
+              }
+            },
+            {
+              "text": "Minify JSON",
+              "action": {
+                "type": "api",
+                "name": "json.minify",
+                "input": "jsonInput",
+                "output": "jsonOutput"
+              }
+            },
+            {
+              "text": "Clear JSON",
+              "action": {
+                "type": "clear",
+                "target": "jsonOutput"
+              }
+            }
+          ]
+        },
+        {
+          "type": "input",
+          "id": "urlInput",
+          "label": "URL text",
+          "default": "PermsTest plugin api & spaces"
+        },
+        {
+          "type": "multiline",
+          "id": "urlOutput",
+          "label": "URL output",
+          "default": ""
+        },
+        {
+          "type": "buttons",
+          "buttons": [
+            {
+              "text": "URL Encode",
+              "action": {
+                "type": "api",
+                "name": "url.encode",
+                "input": "urlInput",
+                "encoding": "encoding",
+                "output": "urlOutput"
+              }
+            },
+            {
+              "text": "URL Decode",
+              "action": {
+                "type": "api",
+                "name": "url.decode",
+                "input": "urlOutput",
+                "encoding": "encoding",
+                "output": "urlInput"
+              }
+            },
+            {
+              "text": "Clear URL",
+              "action": {
+                "type": "clear",
+                "target": "urlOutput"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

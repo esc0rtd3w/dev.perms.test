@@ -1,0 +1,65 @@
+{
+  "title": "Declarative UI Demo",
+  "description": "This UI is built from ui.json inside the plugin package. The host owns rendering, validation, shell access, and output.",
+  "controls": [
+    {
+      "type": "group",
+      "label": "Generic UI controls",
+      "controls": [
+        {
+          "type": "input",
+          "id": "name",
+          "label": "Message input",
+          "default": "Hello from a self-contained plugin"
+        },
+        {
+          "type": "dropdown",
+          "id": "mode",
+          "label": "Mode",
+          "values": [
+            "Echo",
+            "Device model shell"
+          ],
+          "default": "Echo"
+        },
+        {
+          "type": "output",
+          "id": "output",
+          "label": "Output",
+          "text": "Tap a button."
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "buttons",
+      "buttons": [
+        {
+          "text": "Echo",
+          "action": {
+            "type": "setText",
+            "target": "output",
+            "value": "Echo: ${name}"
+          }
+        },
+        {
+          "text": "Device Model",
+          "action": {
+            "type": "shell",
+            "command": "getprop ro.product.model",
+            "output": "output"
+          }
+        },
+        {
+          "text": "Clear",
+          "action": {
+            "type": "clear",
+            "target": "output"
+          }
+        }
+      ]
+    }
+  ]
+}

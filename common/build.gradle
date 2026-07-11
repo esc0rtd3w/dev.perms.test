@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 23
+    }
+
+    namespace 'rikka.shizuku.common'
+    buildFeatures {
+        buildConfig = false
+    }
+}
+
+dependencies {
+    compileOnly 'dev.rikka.hidden:stub:4.4.0'
+}

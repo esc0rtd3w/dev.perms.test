@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:text="Home"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.75"
+        android:paddingBottom="10dp"
+        android:text="Launcher mode, HOME behavior, and the App Tray shortcuts live here. This is a cloned popout view; the main Home card stays in place."
+        android:textSize="12sp" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/chkRunAsLauncher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Run as Home Launcher" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/chkKioskMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:checked="false"
+        android:text="Kiosk Mode" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/chkAutoRestartLauncher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:checked="true"
+        android:text="Auto-restart when HOME mode changes" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="8dp"
+        android:text="App Tray"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="420dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMainHomeAppTrayClone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="ifContentScrolls" />
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

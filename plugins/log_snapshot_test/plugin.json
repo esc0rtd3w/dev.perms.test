@@ -1,0 +1,31 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "log_snapshot_test",
+  "name": "Log Snapshot Test",
+  "version": "1.0.0",
+  "author": "PermsTest",
+  "description": "Bundled native plugin that summarizes PermsTest log and log-archive folders.",
+  "comments": "Small test plugin for validating plugin restore, shell capture, highlighted viewer output, and optional Run In Window behavior.",
+  "entry": {
+    "type": "native-actions",
+    "notes": "Actions map to handlers registered by dev.perms.test.plugins.PluginActionRegistry."
+  },
+  "actions": [
+    {
+      "id": "show_log_snapshot",
+      "title": "Show Log Snapshot",
+      "description": "List current PermsTest log folders, sizes, and recent files for testing/plugin diagnostics.",
+      "type": "native",
+      "handler": "log_snapshot_dialog",
+      "syntax": "shell"
+    }
+  ],
+  "icon": "icon.png",
+  "runtime": "trusted_native",
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "trusted_native"
+  ]
+}

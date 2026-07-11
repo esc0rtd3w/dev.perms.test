@@ -1,0 +1,1417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/memoryOverlayRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMemoryOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:strokeColor="?attr/colorOutline"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:id="@+id/overlayMemoryHeader"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Memory Editor"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnOverlayMemoryResetWindows"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/memory_overlay_header_button"
+                    android:clickable="true"
+                    android:contentDescription="Reset overlay windows"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="↻"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btnOverlayMemoryMinimize"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/memory_overlay_header_button"
+                    android:clickable="true"
+                    android:contentDescription="Minimize"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="–"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/btnOverlayMemoryClose"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/memory_overlay_header_button"
+                    android:clickable="true"
+                    android:contentDescription="Close"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="X"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/overlayMemoryScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Target Application"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilOverlayMemoryTargetPkg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:hint="Target package"
+                                app:endIconMode="dropdown_menu"
+                                app:expandedHintEnabled="false">
+
+                                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                    android:id="@+id/edtOverlayMemoryTargetPkg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:gravity="center_vertical"
+                                    android:inputType="none"
+                                    android:minHeight="32dp"
+                                    android:paddingStart="12dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingEnd="56dp"
+                                    android:paddingBottom="5dp"
+                                    android:scrollHorizontally="true"
+                                    android:singleLine="true"
+                                    android:textSize="9sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowOverlayMemoryTargetPackageLoading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <ProgressBar
+                                    android:id="@+id/progressOverlayMemoryTargetPackageLoading"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:indeterminate="true" />
+
+                                <TextView
+                                    android:id="@+id/txtOverlayMemoryTargetPackageLoading"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_weight="1"
+                                    android:text="Loading target packages..."
+                                    android:textSize="9sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowOverlayMemorySessionButtons"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemoryScanAtStartup"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:checked="true"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="4dp"
+                                    android:text="Scan at startup"
+                                    android:textSize="9sp" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryUsePackageTarget"
+                                    android:layout_width="66dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="6dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Use"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="14dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryRefresh"
+                                    android:layout_width="70dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="6dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Refresh"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="14dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryClearState"
+                                    android:layout_width="62dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="6dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Clear"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryStageTool"
+                                    android:layout_width="66dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="6dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Stage"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.checkbox.MaterialCheckBox
+                                android:id="@+id/chkOverlayMemoryExcludeSelfPackage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="0dp"
+                                android:text="Exclude PermsTest"
+                                android:textSize="9sp"
+                                android:visibility="gone" />
+
+                            <com.google.android.material.checkbox.MaterialCheckBox
+                                android:id="@+id/chkOverlayMemoryAutoStage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minHeight="0dp"
+                                android:text="Auto Stage"
+                                android:textSize="9sp"
+                                android:visibility="gone" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilOverlayMemoryProcess"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:hint="Running process"
+                                app:endIconMode="dropdown_menu"
+                                app:expandedHintEnabled="false">
+
+                                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                    android:id="@+id/ddOverlayMemoryProcess"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:inputType="none"
+                                    android:minHeight="32dp"
+                                    android:paddingStart="12dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingEnd="56dp"
+                                    android:paddingBottom="5dp"
+                                    android:scrollHorizontally="true"
+                                    android:singleLine="true"
+                                    android:textSize="9sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rowOverlayMemoryProcessLoading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <ProgressBar
+                                    android:id="@+id/progressOverlayMemoryProcessLoading"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:indeterminate="true" />
+
+                                <TextView
+                                    android:id="@+id/txtOverlayMemoryProcessLoading"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_weight="1"
+                                    android:text="Loading running processes..."
+                                    android:textSize="9sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryStartApp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Start"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryStopApp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Stop"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="7dp"
+                                    android:alpha="0.45"
+                                    android:background="?attr/colorOutline" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryAttach"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Attach"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryDetach"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Detach"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Search Memory"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tilOverlayMemoryDataType"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Data type"
+                                    app:endIconMode="dropdown_menu"
+                                    app:expandedHintEnabled="false">
+
+                                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                        android:id="@+id/ddOverlayMemoryDataType"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:inputType="none"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="56dp"
+                                        android:paddingBottom="5dp"
+                                        android:scrollHorizontally="true"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tilOverlayMemorySearchMode"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:hint="Scan mode"
+                                    app:endIconMode="dropdown_menu"
+                                    app:expandedHintEnabled="false">
+
+                                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                        android:id="@+id/ddOverlayMemorySearchMode"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:inputType="none"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="56dp"
+                                        android:paddingBottom="5dp"
+                                        android:scrollHorizontally="true"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tilOverlayMemorySearchValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Search value"
+                                    app:endIconContentDescription="Clear search value"
+                                    app:endIconMode="clear_text">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemorySearchValue"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="12dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemorySyncResultValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="6dp"
+                                    android:checked="true"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:text="Sync Result Value"
+                                    android:textSize="9sp" />
+
+                                <CheckBox
+                                    android:id="@+id/chkOverlayMemoryStringCaseSensitive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="6dp"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:text="Case"
+                                    android:textSize="9sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="70dp"
+                                    android:layout_height="wrap_content"
+                                    android:hint="List ≤">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryResultLimit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="10dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="10dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:text="500"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="90dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:hint="Cap">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryMaxResults"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="10dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="10dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:text="500000"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryNewScan"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="New Scan"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryFind"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Next Scan"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txtOverlayMemoryRangeStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Range: first"
+                                    android:textSize="9sp" />
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemoryAutoRange"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:checked="true"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:text="Auto"
+                                    android:textSize="9sp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="58dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:hint="Limit">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryAutoRangeLimit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number"
+                                        android:minHeight="26dp"
+                                        android:paddingStart="8dp"
+                                        android:paddingTop="2dp"
+                                        android:paddingEnd="8dp"
+                                        android:paddingBottom="2dp"
+                                        android:selectAllOnFocus="true"
+                                        android:singleLine="true"
+                                        android:text="128"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryPreviousRange"
+                                    android:layout_width="56dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Prev"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryNextRange"
+                                    android:layout_width="56dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Next"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryResetRange"
+                                    android:layout_width="64dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Reset"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Patch Options"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tilOverlayMemoryPatchName"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.55"
+                                    android:hint="Patch name">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryPatchName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="12dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1.1"
+                                    android:hint="Address">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryPatchAddress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="12dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tilOverlayMemoryPatchValue"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1.25"
+                                    android:hint="Patch value">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryPatchValue"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="12dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="12dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <CheckBox
+                                    android:id="@+id/chkOverlayMemoryPatchHex"
+                                    android:layout_width="54dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:text="Hex"
+                                    android:textSize="9sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemoryStringPatchTruncate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:checked="true"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="4dp"
+                                    android:text="Truncate string patches"
+                                    android:textSize="9sp" />
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemoryFreezePatch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="4dp"
+                                    android:text="Lock/Freeze"
+                                    android:textSize="9sp"
+                                    android:visibility="gone" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryFreezeChecked"
+                                    android:layout_width="62dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Freeze"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryPatch"
+                                    android:layout_width="62dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="2dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="2dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Patch"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryPatchMultiple"
+                                    android:layout_width="90dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Patch Multiple"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryHex"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Hex Editor"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryDisasm"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Disassembly"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemorySpecialTools"
+                                    android:layout_width="52dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Tools"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="7dp"
+                                    android:alpha="0.45"
+                                    android:background="?attr/colorOutline" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemorySavePatches"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Save Patches"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryLoadPatches"
+                                    android:layout_width="0dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="1dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="1dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Load Patches"
+                                    android:textSize="8sp"
+                                    app:cornerRadius="13dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryFilter"
+                                    android:layout_width="1dp"
+                                    android:layout_height="1dp"
+                                    android:text="Filter"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+<com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Dump Options"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.checkbox.MaterialCheckBox
+                                    android:id="@+id/chkOverlayMemoryDumpToDisk"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="28dp"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:text="Save"
+                                    android:textSize="9sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.72"
+                                android:text="Save writes to /sdcard/dev.perms.test/memory_dumps/"
+                                android:textSize="8sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Dump begin">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryDumpBegin"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="10dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="10dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:hint="Dump end">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edtOverlayMemoryDumpEnd"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="textNoSuggestions"
+                                        android:minHeight="32dp"
+                                        android:paddingStart="10dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingEnd="10dp"
+                                        android:paddingBottom="5dp"
+                                        android:singleLine="true"
+                                        android:textSize="9sp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOverlayMemoryDump"
+                                    android:layout_width="58dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="4dp"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingStart="0dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingEnd="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:singleLine="true"
+                                    android:text="Dump"
+                                    android:textSize="9sp"
+                                    app:cornerRadius="13dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/txtOverlayMemorySelectedResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.82"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="No selected address. Tap a listed result to patch only that address."
+                        android:textSize="9sp" />
+
+
+                    <LinearLayout
+                        android:id="@+id/rowOverlayMemorySelectResults"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOverlayMemorySelectAllResults"
+                            android:layout_width="76dp"
+                            android:layout_height="22dp"
+                            android:layout_marginStart="6dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingEnd="0dp"
+                            android:paddingBottom="0dp"
+                            android:singleLine="true"
+                            android:text="Select All"
+                            android:textSize="8sp"
+                            app:cornerRadius="11dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOverlayMemorySelectNoneResults"
+                            android:layout_width="82dp"
+                            android:layout_height="22dp"
+                            android:layout_marginStart="6dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingEnd="0dp"
+                            android:paddingBottom="0dp"
+                            android:singleLine="true"
+                            android:text="Select None"
+                            android:textSize="8sp"
+                            app:cornerRadius="11dp" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOverlayMemoryPreviousResultPage"
+                            android:layout_width="34dp"
+                            android:layout_height="22dp"
+                            android:layout_marginEnd="4dp"
+                            android:contentDescription="Show previous visible result page"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingEnd="0dp"
+                            android:paddingBottom="0dp"
+                            android:singleLine="true"
+                            android:text="&lt;"
+                            android:textSize="10sp"
+                            android:visibility="gone"
+                            app:cornerRadius="11dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOverlayMemoryNextResultPage"
+                            android:layout_width="34dp"
+                            android:layout_height="22dp"
+                            android:layout_marginEnd="6dp"
+                            android:contentDescription="Show next visible result page"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingEnd="0dp"
+                            android:paddingBottom="0dp"
+                            android:singleLine="true"
+                            android:text="&gt;"
+                            android:textSize="10sp"
+                            android:visibility="gone"
+                            app:cornerRadius="11dp" />
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/lstOverlayMemoryResults"
+                        android:layout_width="match_parent"
+                        android:layout_height="230dp"
+                        android:layout_marginTop="4dp"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="1dp"
+                        android:fastScrollAlwaysVisible="false"
+                        android:fastScrollEnabled="true"
+                        android:nestedScrollingEnabled="true"
+                        android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
+                        android:scrollbarTrackVertical="@drawable/scrollbar_track"
+                        android:scrollbars="vertical"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txtOverlayMemorySummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:visibility="gone"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/txtOverlayMemoryLogLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0.72"
+                        android:text="Details"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/txtOverlayMemoryOutput"
+                        android:layout_width="match_parent"
+                        android:layout_height="116dp"
+                        android:layout_marginTop="2dp"
+                        android:alpha="0.78"
+                        android:overScrollMode="ifContentScrolls"
+                        android:padding="6dp"
+                        android:scrollbars="none"
+                        android:text=""
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/overlayMemoryResizeHandle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:alpha="0.82"
+        android:background="@android:color/transparent"
+        android:contentDescription="Resize overlay"
+        android:src="@drawable/memory_overlay_resize_grip" />
+</FrameLayout>

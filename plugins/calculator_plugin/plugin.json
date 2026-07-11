@@ -1,0 +1,29 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "calculator_plugin",
+  "name": "Calculator",
+  "version": "1.0",
+  "author": "PermsTest",
+  "icon": "icon.png",
+  "description": "Calculator plugin surface for hex, decimal, octal, binary, arithmetic, and bitwise operations.",
+  "comments": "Bundled internal tool plugin. It requests a PermsTest host tool surface through the plugin API so the proven native controller keeps full behavior.",
+  "actions": [
+    {
+      "id": "open",
+      "title": "Open Calculator",
+      "description": "Open the matching native PermsTest tool surface through the plugin host API.",
+      "type": "native",
+      "handler": "open_calculator_tool",
+      "windowStyle": "full",
+      "windowFit": "current",
+      "presentation": "window"
+    }
+  ],
+  "runtime": "trusted_native",
+  "windowStyle": "full",
+  "windowFit": "current",
+  "capabilities": [
+    "trusted_native"
+  ]
+}

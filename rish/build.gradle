@@ -1,0 +1,38 @@
+plugins {
+    id('com.android.library')
+}
+
+android {
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 23
+    }
+
+    namespace 'rikka.rish'
+    // NOTE (PermsTest embedded Shizuku):
+    // RISH ships with native components, but PermsTest's embedded Shizuku path does not require
+    // building them. Disabling externalNativeBuild keeps the project buildable without an NDK.
+    buildFeatures { prefab false }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation project(':api')
+
+    implementation 'androidx.annotation:annotation:1.3.0'
+}
+
+ext {
+    publishLibrary = false
+    POM_NAME = "RISH"
+    POM_DESCRIPTION = "RISH"
+}

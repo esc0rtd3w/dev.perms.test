@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tag_dropdown_moved" type="id"/>
+    <item name="tag_ui_compat_base_text_px" type="id"/>
+    <item name="tag_ui_compat_base_min_height" type="id"/>
+    <item name="tag_ui_compat_base_padding_left" type="id"/>
+    <item name="tag_ui_compat_base_padding_top" type="id"/>
+    <item name="tag_ui_compat_base_padding_right" type="id"/>
+    <item name="tag_ui_compat_base_padding_bottom" type="id"/>
+    <item name="tag_phone_responsive_stacked" type="id"/>
+</resources>

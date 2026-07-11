@@ -1,0 +1,31 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "script_file_demo_plugin",
+  "name": "Script File Demo",
+  "version": "1.0",
+  "author": "PermsTest",
+  "runtime": "script",
+  "icon": "icon.png",
+  "description": "Self-contained plugin that demonstrates a plugin-local shell script file controlled by Plugin Runtime Policy.",
+  "comments": "The script file stays inside the plugin package and runs only after an explicit tap through the selected PermsTest execution backend.",
+  "actions": [
+    {
+      "id": "device_summary_script",
+      "title": "Run Script File",
+      "description": "Run scripts/device_summary.sh through the controlled shell/script runtime.",
+      "type": "script",
+      "handler": "script",
+      "script": "scripts/device_summary.sh",
+      "presentation": "window",
+      "syntax": "shell",
+      "windowStyle": "compact",
+      "windowFit": "current"
+    }
+  ],
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "shell_script"
+  ]
+}

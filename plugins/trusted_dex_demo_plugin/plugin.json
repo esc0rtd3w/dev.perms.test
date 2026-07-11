@@ -1,0 +1,34 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "trusted_dex_demo_plugin",
+  "name": "Trusted-Dex Demo",
+  "version": "1.0",
+  "author": "PermsTest",
+  "runtime": "trusted_dex",
+  "icon": "icon.png",
+  "description": "Demo trusted-Dex plugin with a tiny plugin-local .dex payload for exercising review, trust, SHA-256, and explicit-tap dispatch.",
+  "comments": "This demo does not launch APK components or run in the background. It only runs through the trusted_dex runtime after all policy checks pass and the user taps the action.",
+  "actions": [
+    {
+      "id": "run_trusted_string",
+      "title": "Run Trusted String Demo",
+      "description": "Load the reviewed .dex payload and call public static String run().",
+      "type": "trusted_dex",
+      "handler": "payloads/trusted_dex_demo.dex",
+      "target": "payloads/trusted_dex_demo.dex",
+      "className": "dev.perms.test.plugins.demo.TrustedDexDemo",
+      "methodName": "run",
+      "sha256": "ab97154017e801dd333a49201bef37df8aa9718c9015ab6aaf73426d11f75e09",
+      "presentation": "window",
+      "syntax": "text",
+      "windowStyle": "compact",
+      "windowFit": "current"
+    }
+  ],
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "trusted_dex"
+  ]
+}

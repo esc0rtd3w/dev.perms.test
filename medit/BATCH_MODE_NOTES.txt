@@ -1,0 +1,57 @@
+apk-medit batch-mode notes
+
+Changed source areas:
+- main.go
+- cmd/cmd.go
+- pkg/memory/search.go
+
+Purpose:
+- Keep the normal interactive prompt intact when `--command` is not used.
+- Add a one-shot command path using `--command` and `--state-file`.
+- Persist target PID, search results, and attach-requested mode between one-shot runs.
+- Make attach/detach batch-friendly:
+  - `attach` enables attach-requested mode in the state file.
+  - later find/filter/dump commands temporarily ptrace attach for that run and then detach.
+  - `detach` clears attach-requested mode.
+- Keep find/filter/patch/dump/ps/clear-state usable as one-shot commands.
+- Make `cmd.Found` serializable and restore its converter after JSON load.
+- Add numeric comparison commands:
+  - `find-gt <datatype> <value>`
+  - `find-lt <datatype> <value>`
+  - `filter-gt <value>`
+  - `filter-lt <value>`
+  - `filter-unchanged`
+  - `snapshot <datatype>`
+- Store small-result current values in the state JSON so frontends can display address/value rows.
+- Add `search-bytes-mask <hex> <mask>` for masked byte scans. Mask bytes use non-zero values as fixed compare positions and zero as wildcard positions. The masked search keeps normal result caps/skip behavior and requires at least one fixed byte.
+
+Build requirements:
+- Go installed.
+- Internet access on the first build, or a populated Go module cache.
+- Optional make.
+- Optional adb if using deploy steps.
+
+Example Linux/Android-arm64 build:
+
+```sh
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o medit
+```
+
+Example one-shot usage:
+
+```sh
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "attach"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "find dword 100"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "filter 200"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "find-gt dword 500"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "filter-lt 400"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "snapshot dword"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "patch 999"
+./medit --pid 21828 --state-file /data/local/tmp/medit_state.json --command "detach"
+./medit --state-file /data/local/tmp/medit_state.json --command "clear-state"
+```
+
+Validation checklist:
+- Run `gofmt`.
+- Run `go test ./...` when dependencies are available.
+- Build target binaries on the intended host/NDK setup.

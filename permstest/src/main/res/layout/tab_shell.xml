@@ -1,0 +1,2774 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabShell"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:scrollbarStyle="insideOverlay">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shell Commands &amp; Tools"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCmd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Shizuku shell command (sh -c)"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCmd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textNoSuggestions"
+                        android:singleLine="true"
+                        android:text="id" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRunCmd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Run" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveCmd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Save" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnStopShell"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Stop" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCopy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Copy" />
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCustomCommands"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="?attr/colorOutline"
+                    app:cardBackgroundColor="?attr/colorSurface">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingBottom="2dp"
+                                android:tag="collapsible_groupbox_header">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Custom Commands"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:tag="shell_popout_custom_commands"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="8dp"
+                                    android:contentDescription="Pop out Custom Commands"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingLeft="6dp"
+                                    android:paddingRight="6dp"
+                                    android:text=""
+                                    app:icon="@drawable/ic_popout_open_in_new_24"
+                                    app:iconGravity="textStart"
+                                    app:iconTint="?attr/colorPrimary"
+                                    app:iconPadding="0dp"
+                                    app:iconSize="20dp" />
+                            </LinearLayout>
+
+                        <TextView
+android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tap to run. Long-press to rename/remove."
+                            android:textSize="12sp"
+                            android:alpha="0.75"
+                            android:paddingBottom="10dp" />
+
+                        
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnExportCustomCmds"
+                                style="?attr/materialButtonOutlinedStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Export"
+                                android:minHeight="40dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnImportCustomCmds"
+                                style="?attr/materialButtonOutlinedStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:text="Import"
+                                android:minHeight="40dp" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/customCmdRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:overScrollMode="never"
+                            android:clipToPadding="false" />
+
+                        <TextView
+                            android:id="@+id/txtCustomCmdEmpty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No saved commands yet. Type a command above and tap Save."
+                            android:textSize="12sp"
+                            android:alpha="0.75"
+                            android:paddingTop="6dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Quick groups (the colored command buttons). These should all disable when Shizuku is not ready. -->
+                <LinearLayout
+                    android:id="@+id/shellQuickGroups"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardShellCommands"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:cardBackgroundColor="?attr/colorSurface">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingBottom="10dp"
+                                android:tag="collapsible_groupbox_header">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Shell Commands"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:tag="shell_popout_shell_commands"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="8dp"
+                                    android:contentDescription="Pop out Shell Commands"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingLeft="6dp"
+                                    android:paddingRight="6dp"
+                                    android:text=""
+                                    app:icon="@drawable/ic_popout_open_in_new_24"
+                                    app:iconGravity="textStart"
+                                    app:iconTint="?attr/colorPrimary"
+                                    app:iconPadding="0dp"
+                                    app:iconSize="20dp" />
+                            </LinearLayout>
+
+                <!-- Four-column rows keep short shell labels compact while preserving the existing button styles. -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Basics"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="df" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUptime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="uptime" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWhoami"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="whoami" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPwd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="pwd" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickEnv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="env" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diagnostics &amp; Dumps"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickActRecents"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="act recents" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPropDump"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="prop dump" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAlarm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="alarms" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickConn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="connectivity" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDropbox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="dropbox" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickJobs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="jobs" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNetstats"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="netstats" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickProcstats"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="procstats" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSensors"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="sensors" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSurface"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="surface" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTelephony"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="telephony" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUsage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="usage" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Network"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickIp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="ip addr" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="net" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNetpolicy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="netpolicy" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNeigh"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="ip neigh" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickRoute"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="route" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWifi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="wifi" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDns"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="dns" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSockets"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="sockets" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Packages"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAppops"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="appops mine" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPkgs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="list pkgs" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPermDanger"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="perm danger" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFeatures"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="features" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPkgPaths"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="pkg paths" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPkgDumpSel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="pkg dump" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPkgSelf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="pkg self" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickServices"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="services" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUsers"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="users" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickInstallSessions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="install sessions" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPermGroups"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="perm groups" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDisabledPkgs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="disabled pkgs" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Power &amp; Input"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDeviceIdle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="deviceidle" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="input" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPower"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="power" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBattery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="battery" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBatteryStats"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="batterystats" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWakeState"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="wake state" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickInputHelp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="input help" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDisplay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="display" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="System"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickActTop"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="act top" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickCpuinfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="cpuinfo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWmSize"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="wm size" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWmDensity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="wm density" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSettingsGlobal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="set global" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSettingsSecure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="set secure" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGetprop"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="getprop" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickMeminfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="meminfo" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickMount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="mount" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickProps"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="props" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="ps" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSelinux"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="SELinux" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="settings" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickStorage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="storage" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTop"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="top" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="uname" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBuildProps"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="build" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickKernelInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="kernel" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBootState"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="boot state" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLocales"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="locales" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Files &amp; Storage"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLsSdcard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="ls sdcard" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAppFolder"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="app folder" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDuApp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="du app" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTmp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="tmp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFindDirs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="find dirs" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickMountsFile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="mounts file" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSmVolumes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="volumes" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickStatShell"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="stat sh" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Runtime &amp; Logs"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLogCrash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="crash log" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLogEvents"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="event log" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickActivityProcesses"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="act procs" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSystemServer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="system_server" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickThreads"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="threads" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAnr"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="anr" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTombstones"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="tombstones" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickActivityServices"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="act services" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Security"
+                    android:textStyle="bold"
+                    android:paddingBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDevicePolicy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="device policy" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickKeystore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="keystore" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickCertStore"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="cert store" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickRoles"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="roles" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPermsFull"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="perms full" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAppopsHelp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="appops help" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSelinuxDenials"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="avc denials" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLockSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="lock settings" />
+
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp" />
+
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardSystemBinaries"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="?attr/colorOutline"
+                        app:cardBackgroundColor="?attr/colorSurface">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingBottom="8dp"
+                                android:tag="collapsible_groupbox_header">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="System Binaries"
+                                    android:textStyle="bold" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:tag="shell_popout_system_binaries"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="8dp"
+                                    android:contentDescription="Pop out System Binaries"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:paddingLeft="6dp"
+                                    android:paddingRight="6dp"
+                                    android:text=""
+                                    app:icon="@drawable/ic_popout_open_in_new_24"
+                                    app:iconGravity="textStart"
+                                    app:iconTint="?attr/colorPrimary"
+                                    app:iconPadding="0dp"
+                                    app:iconSize="20dp" />
+                            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageBundledBins"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/manage_bundled_bins" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAdb"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="adb" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAdbMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBase64"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="base64" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickBase64Menu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickClear"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="clear" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickClearMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickCurl"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="curl" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickCurlMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDos2unix"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="dos2unix" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDos2unixMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDumpsys"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="dumpsys" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickDumpsysMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFastboot"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="fastboot" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFastbootMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFree"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="free" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickFreeMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGetevent"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="getevent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGeteventMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGzip"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="gzip" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGzipMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGunzip"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="gunzip" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickGunzipMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickIpBin"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="ip" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickIpBinMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLogcat"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="logcat" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLogcatMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLsof"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="lsof" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLsofMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLspci"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="lspci" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLspciMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLsusb"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="lsusb" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickLsusbMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickMd5sum"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="md5sum" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickMd5sumMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNetcat"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="netcat" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickNetcatMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPing"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="ping" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPingMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPm"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="pm" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickPmMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickReadelf"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="readelf" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickReadelfMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickReboot"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="@string/cmd_reboot" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickRebootMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickRunAs"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="run-as" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickRunAsMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickScreencap"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="screencap" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickScreencapMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickScreenrecord"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="screenrecord" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickScreenrecordMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSetenforce"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="setenforce" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSetenforceMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSettingsGroup"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="settings" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSettingsGroupMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSha256sum"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="sha256sum" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSha256sumMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickStart"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="start" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickStartMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSysctl"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="sysctl" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickSysctlMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTcpdump"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="tcpdump" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTcpdumpMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickToybox"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="toybox" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickToyboxMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTty"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="tty" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickTtyMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUmount"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="umount" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUmountMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUnix2dos"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="unix2dos" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickUnix2dosMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickVmstat"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="vmstat" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickVmstatMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWatch"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="watch" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickWatchMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickXxd"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="xxd" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickXxdMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickYes"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="yes" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickYesMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZcat"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="zcat" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZcatMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZipinfo"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="zipinfo" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZipinfoMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZiptool"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAllCaps="false"
+                        android:singleLine="true"
+                        android:text="ziptool" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickZiptoolMenu"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="44dp"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="false"
+                        android:minHeight="40dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="⋮"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+</LinearLayout>
+        </androidx.core.widget.NestedScrollView>

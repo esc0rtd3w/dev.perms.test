@@ -1,0 +1,31 @@
+{
+  "schema": "dev.perms.test.plugin",
+  "apiVersion": 1,
+  "id": "build_prop_test",
+  "name": "Build Prop Test",
+  "version": "1.0.0",
+  "author": "PermsTest",
+  "description": "Sample native plugin that reads build.prop-style files and Android getprop output, then displays the result in a highlighted dialog.",
+  "comments": "This sample is intentionally manifest-driven. The handler is implemented by PermsTest native plugin API so the action behaves like built-in app code.",
+  "entry": {
+    "type": "native-actions",
+    "notes": "Actions map to handlers registered by dev.perms.test.plugins.PluginActionRegistry."
+  },
+  "actions": [
+    {
+      "id": "show_build_prop",
+      "title": "Show build.prop",
+      "description": "Read /system, /vendor, /product, /odm build.prop files and sorted getprop output.",
+      "type": "native",
+      "handler": "build_prop_dialog",
+      "syntax": "properties"
+    }
+  ],
+  "icon": "icon.png",
+  "runtime": "trusted_native",
+  "windowStyle": "compact",
+  "windowFit": "current",
+  "capabilities": [
+    "trusted_native"
+  ]
+}

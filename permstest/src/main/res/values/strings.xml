@@ -1,0 +1,485 @@
+<resources>
+    <string name="about_version" formatted="false">v1.0-20260710.06</string>
+    <string name="about_github_link" formatted="false">https://github.com/esc0rtd3w/dev.perms.test</string>
+    <string name="about_summary" formatted="false">PermsTest is an Android diagnostics and testing toolkit for packages, privileged shell commands, files, networks, memory tools, save-data editing, debugging, plugins, logs, and VR-compatible panels.</string>
+    <string name="internal_shizuku_accessibility_desc">Detect Wireless debugging ports for Internal Shizuku pairing.</string>
+
+    <string name="app_name">Shizuku Sample</string>
+    <string name="memory_window_label_editor">Memory Editor</string>
+    <string name="memory_window_label_hex">Hex Editor</string>
+    <string name="memory_window_label_disassembly">Disassembly</string>
+    <string name="memory_window_label_special_tools">Special Tools</string>
+
+    <string name="startup_loading_title">PermsTest</string>
+    <string name="startup_loading_subtitle">Starting PermsTest, restoring saved choices, and checking active tools</string>
+    <string name="startup_loading_stage">Getting the workspace ready</string>
+    <string name="startup_tip_shizuku">Choose Shizuku, Internal Shizuku, LADB, or System before privileged actions.</string>
+    <string name="startup_tip_debug">Turn on Debug Output before reproducing a problem so the app records useful status lines.</string>
+    <string name="startup_tip_vr">Use VR-compatible panels when normal overlay windows are not suitable for the headset.</string>
+    <string name="startup_tip_network">Start FTP, HTTP, or SSH only while remote access must remain active.</string>
+    <string name="startup_tip_memory">Pick the target package/process first so scans, patches, and payloads stay scoped correctly.</string>
+    <string name="startup_tip_web">Enable only the Web Interface sections you want reachable from a browser.</string>
+    <string name="startup_tip_packages">Use Package tools to launch, inspect, extract, install, uninstall, or change app state.</string>
+    <string name="startup_tip_files">Switch Files to Shizuku access when protected paths or faster privileged copies are needed.</string>
+    <string name="startup_tip_shell">Run shell commands through the selected backend and check the exit code before trusting output.</string>
+    <string name="startup_tip_split_apks">Use split install options to choose ABI, language, and density entries from APKS/APKM/XAPK archives.</string>
+    <string name="startup_tip_payloads">Check original bytes, patched bytes, masks, and package scope before applying payloads.</string>
+    <string name="startup_tip_hex">Open Hex Editor from a result row when nearby bytes need inspection before a write.</string>
+    <string name="startup_tip_disassembly">Use Disassembly for instruction context, branch targets, and Hex sync around an address.</string>
+    <string name="startup_tip_save_data">Use Save Data presets with backups before writing modified save files.</string>
+    <string name="startup_tip_http_root">Use Copy File To Root or Copy Folder To Root to publish content through HTTP.</string>
+    <string name="startup_tip_ftp">Enable sleep mode only when FTP or HTTP must survive the screen turning off.</string>
+    <string name="startup_tip_multiplayer">Start Multiplayer Link host before a guest device fetches shared status.</string>
+    <string name="startup_tip_logging">Mark a log session before testing so exported logs have a clear starting point.</string>
+    <string name="startup_tip_home_mode">Home Mode opens Android default-launcher selection after the launcher alias is enabled.</string>
+    <string name="startup_tip_settings">Settings apply missing defaults without overwriting choices you already saved.</string>
+    <string name="startup_tip_web_memory">Memory web controls use the same backend path as the native Memory tools.</string>
+    <string name="startup_tip_debugging">Use Debugging tools to decompile, search, edit, rebuild, sign, and inspect APK changes.</string>
+    <string name="funny_animation_tooltips">Funny Animation Tooltips</string>
+    <string name="hide_main_page_banner">Hide Main Page Banner</string>
+    <string name="theme_colors_black_default">Dark (Default)</string>
+    <string name="theme_colors_custom">Custom Color</string>
+    <string name="theme_colors_gradient">Gradient</string>
+    <string name="theme_colors_navigation_tabs">Color Navigation Tabs</string>
+    <string name="automatic_device_detection">Automatically Apply Device Defaults</string>
+    <string name="enable_vr_mode">Enable VR Mode</string>
+    <string name="device_profile_info_default">Device Profile: Detecting profile, device, OS, CPU, DPI, language, and serial status</string>
+
+    <string name="startup_loading_stage_packages">Preparing package lists and install actions</string>
+    <string name="startup_loading_stage_memory">Preparing scanner, payload, Hex, and Disassembly tools</string>
+    <string name="startup_loading_stage_files">Preparing file browser shortcuts and actions</string>
+    <string name="startup_loading_stage_network">Checking FTP, HTTP, SSH, Web, and network tools</string>
+    <string name="startup_loading_stage_shell">Preparing shell commands and backend output</string>
+    <string name="startup_loading_stage_debugging">Loading APK, smali, MITM, and report tools</string>
+    <string name="startup_loading_stage_settings">Applying saved settings without changing user choices</string>
+    <string name="startup_loading_stage_web">Preparing web controls</string>
+    <string name="startup_loading_stage_main">Checking selected execution backend</string>
+    <string name="startup_loading_stage_install">Preparing installer options</string>
+    <string name="startup_loading_stage_fileopen">Registering file handlers</string>
+    <string name="startup_loading_stage_save_data">Preparing save-data configs, presets, and backups</string>
+    <string name="startup_loading_stage_scripts">Preparing script editor</string>
+    <string name="startup_loading_stage_logging">Opening log buffers</string>
+    <string name="startup_loading_stage_theme">Applying theme colors</string>
+    <string name="startup_loading_stage_link">Preparing link controls</string>
+    <string name="startup_loading_stage_panels">Checking popout panel settings</string>
+    <string name="startup_loading_stage_services">Refreshing service state</string>
+    <string name="startup_loading_stage_update">Checking update controls</string>
+    <string name="startup_loading_stage_payload_editor">Indexing payload editor state</string>
+    <string name="startup_loading_stage_smali_service">Preparing smali job service</string>
+    <string name="startup_loading_stage_debug_paths">Resolving debugging paths</string>
+    <string name="startup_loading_stage_cache">Checking startup cleanup</string>
+    <string name="startup_loading_stage_install_sources">Checking install sources</string>
+    <string name="startup_loading_stage_http_service">Checking HTTP service hooks</string>
+    <string name="startup_loading_stage_ftp_client">Preparing FTP client views</string>
+    <string name="startup_loading_stage_file_icons">Preparing file icons</string>
+    <string name="startup_loading_stage_notifications">Refreshing active notifications</string>
+    <string name="startup_loading_stage_permissions">Preparing package permission controls</string>
+    <string name="startup_loading_stage_payload_apply">Preparing payload apply guards</string>
+    <string name="startup_loading_stage_hex_sync">Checking Memory, Hex, and Disassembly sync</string>
+    <string name="startup_loading_stage_web_access">Loading Web Interface access settings</string>
+    <string name="startup_loading_stage_output">Preparing output panels</string>
+
+    <string name="startup_tip_scan_unknown">Use Unknown/Snapshot scan when the first value is not known.</string>
+    <string name="startup_tip_scan_next">Use Next Scan to reduce result count after the target value changes.</string>
+    <string name="startup_tip_patch_values">Patch checked rows only after confirming the address, type, and value.</string>
+    <string name="startup_tip_extract_apk">Extract installed APKs to shared storage before rebuilding or inspecting them.</string>
+    <string name="startup_tip_build_debug">Create Debuggable Packages when an APK needs debug flags or user CA trust changes.</string>
+    <string name="startup_tip_smali_search">Search smali output first, then open only the file that needs editing.</string>
+    <string name="startup_tip_ftp_client">Use FTP Client split view to transfer between local storage and a remote server.</string>
+    <string name="startup_tip_http_index">Edit index.html when the HTTP root needs a custom landing page.</string>
+    <string name="startup_tip_logs_export">Use Mark Session before testing so exported logs have a clear starting point.</string>
+    <string name="startup_tip_log_archive">Use Archive Logs before clearing logs so the full PermsTest log folder is preserved in a timestamped ZIP.</string>
+    <string name="startup_tip_vr_panels">VR panel mode keeps Memory, Hex, Disassembly, and Special Tools in separate tasks.</string>
+    <string name="startup_tip_file_open_handler">Open APK and split archives with the installer; use normal browsing for other files.</string>
+    <string name="startup_tip_service_restore">Active Memory, FTP, and HTTP service notifications are refreshed while their services remain active.</string>
+    <string name="startup_tip_shizuku_status">Refresh Shizuku status after restarting the server or changing Wireless Debugging state.</string>
+    <string name="startup_tip_package_dropdown">Package dropdowns can include debuggable packages even when running-only filtering is off.</string>
+    <string name="startup_tip_files_context">Long-press Files entries for install, open-with, copy, move, rename, delete, path, and properties actions.</string>
+    <string name="startup_tip_http_access_gates">Enable only the Web Interface sections that should be reachable from a browser.</string>
+    <string name="startup_tip_memory_freeze">Freeze values only after confirming the target process and selected result rows.</string>
+    <string name="startup_tip_disasm_targets">Open branch or reference targets in Hex when disassembly shows an address worth checking.</string>
+    <string name="startup_tip_scripts_editor">Scripts can be edited in-app and staged from the shared scripts folder.</string>
+    <string name="startup_tip_debugging_mitm">Keep backups and export reports before testing MITM or manifest patches.</string>
+    <string name="startup_tip_save_data_backups">Save Data Editor creates backups before preset writes when backup support is enabled.</string>
+    <string name="startup_tip_web_sleep">Enable HTTP or FTP sleep mode only for sessions that need screen-off access.</string>
+    <string name="startup_tip_install_staging">Use /data/local/tmp staging when split installs need a shell-readable path.</string>
+    <string name="startup_tip_output_height">Output height and truncation settings help keep long command results readable.</string>
+    <string name="startup_tip_theme_custom">Custom theme colors affect the startup screen, app background, and optional navigation tabs.</string>
+    <string name="startup_tip_vr_app_tray">VR App Tray diagnostics stay behind Debug Output so normal navigation remains quiet.</string>
+    <string name="startup_tip_update_checker">Use Check For Updates from About to download the latest PermsTest APK before installing it.</string>
+    <string name="startup_tip_custom_update_server">Custom update URLs can point to a GitHub release page, a latest-release endpoint, or a direct APK.</string>
+    <string name="startup_tip_update_download_cleanup">Downloaded update APKs are staged in a managed folder and cleaned by startup cache cleanup.</string>
+    <string name="startup_tip_debugging_open_any">Open Any lets the Smali Editor load a .smali file outside the active disassembly folder.</string>
+    <string name="startup_tip_smali_service_search">Smali search runs through a foreground job so long searches can continue after navigation.</string>
+    <string name="startup_tip_debugging_package_paths">Debugging work paths use package names when a browsed APK matches an installed package.</string>
+    <string name="startup_tip_external_smali_open">External .smali files can open through the internal editor instead of the package installer path.</string>
+    <string name="startup_tip_payload_editor_colors">Payload dropdown colors show enabled and disabled payload state before opening JSON details.</string>
+    <string name="startup_tip_payload_preserve_mask">Preserve masked bytes keeps wildcard regions from being overwritten during payload writes.</string>
+    <string name="startup_tip_details_scroll">Tap an address in Details to open related tools without losing the current log position.</string>
+    <string name="startup_tip_disasm_open_hex">Tap a disassembly address to open Hex directly, or long-press for the context menu.</string>
+    <string name="startup_tip_memory_package_refresh">Tap Refresh again if a Memory package-list scan fails.</string>
+    <string name="startup_tip_startup_cleanup">Startup cleanup removes managed scratch, import, debugging input, and update-download folders.</string>
+    <string name="startup_tip_about_update_button">The About version row keeps update checks close to the installed version.</string>
+    <string name="startup_tip_managed_update_install">After an update APK downloads, Android package installer still performs the final install confirmation.</string>
+
+    <string name="startup_funny_stage_caps">Reticulating APK splits</string>
+    <string name="startup_funny_stage_sockets">Polishing socket handles</string>
+    <string name="startup_funny_stage_overlays">Negotiating overlay gravity</string>
+    <string name="startup_funny_stage_splits">Sorting density buckets</string>
+    <string name="startup_funny_stage_payloads">Buckling payload seatbelts</string>
+    <string name="startup_funny_stage_shizuku">Warming up Shizuku</string>
+    <string name="startup_funny_stage_logs">Feeding the log buffer</string>
+    <string name="startup_funny_stage_vr">Aligning VR panels</string>
+    <string name="startup_funny_stage_byte_soup">Measuring byte soup</string>
+    <string name="startup_funny_stage_socket_manners">Teaching sockets manners</string>
+    <string name="startup_funny_stage_payload_stretch">Letting payloads stretch</string>
+    <string name="startup_funny_stage_apk_shoelaces">Checking APK shoelaces</string>
+    <string name="startup_funny_stage_log_polite">Asking logs nicely</string>
+    <string name="startup_funny_stage_panel_behave">Convincing panels to behave</string>
+    <string name="startup_funny_stage_shell_dust">Dusting shell commands</string>
+    <string name="startup_funny_stage_split_spaghetti">Untangling split spaghetti</string>
+    <string name="startup_funny_stage_tiny_cones">Installing tiny traffic cones</string>
+    <string name="startup_funny_stage_startup_transition">Rehearsing startup transitions</string>
+    <string name="startup_funny_stage_update_gnome">Consulting update gnome</string>
+    <string name="startup_funny_stage_smali_hammock">Hanging smali hammocks</string>
+    <string name="startup_funny_stage_cache_broom">Finding cache broom</string>
+    <string name="startup_funny_stage_payload_crayons">Sorting payload crayons</string>
+    <string name="startup_funny_stage_hex_lantern">Lighting hex lanterns</string>
+    <string name="startup_funny_stage_api_pigeon">Scheduling API pigeon</string>
+    <string name="startup_funny_stage_permissions_pep">Giving permissions a pep talk</string>
+    <string name="startup_funny_stage_debug_snails">Timing debug snails</string>
+    <string name="startup_funny_stage_http_cookies">Counting HTTP cookies</string>
+    <string name="startup_funny_stage_ftp_backpack">Packing FTP backpack</string>
+    <string name="startup_funny_stage_update_ladder">Leaning update ladder</string>
+    <string name="startup_funny_stage_smali_map">Folding smali map</string>
+    <string name="startup_funny_stage_log_bubbles">Popping log bubbles</string>
+    <string name="startup_funny_stage_log_zipper">Teaching log archives to zip politely</string>
+    <string name="startup_funny_stage_overlay_tape">Applying overlay tape</string>
+    <string name="startup_funny_stage_install_helmet">Handing installer helmet</string>
+
+    <string name="startup_funny_tip_reticulate_splits">Reticulating APK splits; ABI, language, and DPI entries are staying in their lanes.</string>
+    <string name="startup_funny_tip_warm_shizuku">Warming up Shizuku; privileged actions work better after permission is granted.</string>
+    <string name="startup_funny_tip_sort_bytes">Sorting bytes by attitude; Hex Editor will still show the real order.</string>
+    <string name="startup_funny_tip_feed_logs">Feeding the log buffer; Debug Output adds the useful breadcrumbs.</string>
+    <string name="startup_funny_tip_overlay_gravity">Negotiating overlay gravity; VR panels get separate handling when enabled.</string>
+    <string name="startup_funny_tip_hex_snacks">Packing hex snacks; check original bytes before writing patched bytes.</string>
+    <string name="startup_funny_tip_http_doorman">Briefing the HTTP doorman; only enabled Web Interface sections get in.</string>
+    <string name="startup_funny_tip_ftp_tunnel">Digging an FTP tunnel; background mode keeps transfers reachable when enabled.</string>
+    <string name="startup_funny_tip_vr_windows">Opening VR windows carefully; panel mode avoids raw overlay trouble.</string>
+    <string name="startup_funny_tip_payload_seatbelts">Checking payload seatbelts; masks and package scope help prevent wrong writes.</string>
+    <string name="startup_funny_tip_apk_zipper">Zipping APK parts without pinching the manifest.</string>
+    <string name="startup_funny_tip_smali_threads">Untangling smali threads; search before editing keeps the patch small.</string>
+    <string name="startup_funny_tip_memory_socks">Finding matching memory socks; Next Scan removes the lonely ones.</string>
+    <string name="startup_funny_tip_launcher_hats">Trying on launcher hats; Home Mode still opens Android default selection.</string>
+    <string name="startup_funny_tip_safe_mode">Calibrating the safety goggles; backups and logs make testing recoverable.</string>
+    <string name="startup_funny_tip_byte_soup">Measuring byte soup; the Hex Editor promises to label every spoonful.</string>
+    <string name="startup_funny_tip_socket_manners">Teaching sockets manners; FTP and HTTP still wait for explicit start buttons.</string>
+    <string name="startup_funny_tip_payload_stretch">Letting payloads stretch; masks keep the wrong bytes out of yoga class.</string>
+    <string name="startup_funny_tip_apk_shoelaces">Checking APK shoelaces; split archives should not trip over ABI folders.</string>
+    <string name="startup_funny_tip_log_polite">Asking logs nicely; Debug Output makes them answer with more details.</string>
+    <string name="startup_funny_tip_panel_behave">Convincing panels to behave; VR panels stay behind the VR mode gate.</string>
+    <string name="startup_funny_tip_shell_dust">Dusting shell commands; bundled tools get staged before heavy lifting.</string>
+    <string name="startup_funny_tip_split_spaghetti">Untangling split spaghetti; density, language, and ABI strands stay labeled.</string>
+    <string name="startup_funny_tip_tiny_cones">Installing tiny traffic cones; install staging should know which lane it is using.</string>
+    <string name="startup_funny_tip_startup_transition">Rehearsing startup transitions; the final loading text keeps the main screen reveal smooth.</string>
+    <string name="startup_funny_tip_permission_cookies">Baking permission cookies; grants still depend on backend authority.</string>
+    <string name="startup_funny_tip_network_snacks">Packing network snacks; sleep mode should only camp out when needed.</string>
+    <string name="startup_funny_tip_memory_lint">Picking memory lint; Next Scan keeps only the pieces that changed correctly.</string>
+    <string name="startup_funny_tip_http_sandwich">Building an HTTP sandwich; index.html gets the top slice.</string>
+    <string name="startup_funny_tip_debug_ducks">Lining up debug ducks; reports help prove which patch waddled where.</string>
+    <string name="startup_funny_tip_update_gnome">Consulting the update gnome; it prefers release pages with APKs attached.</string>
+    <string name="startup_funny_tip_smali_hammock">Hanging smali hammocks; long searches can rest in the foreground service.</string>
+    <string name="startup_funny_tip_cache_broom">Finding the cache broom; managed temp folders should leave before breakfast.</string>
+    <string name="startup_funny_tip_payload_crayons">Sorting payload crayons; green means enabled and red means sit this one out.</string>
+    <string name="startup_funny_tip_hex_lantern">Lighting hex lanterns; selected addresses are easier to find with fewer shadows.</string>
+    <string name="startup_funny_tip_api_pigeon">Scheduling the API pigeon; custom update servers still need a usable APK trail.</string>
+    <string name="startup_funny_tip_permissions_pep">Giving permissions a pep talk; Android still makes the final call.</string>
+    <string name="startup_funny_tip_debug_snails">Timing debug snails; background smali jobs keep crawling after the tab changes.</string>
+    <string name="startup_funny_tip_http_cookies">Counting HTTP cookies; Web Interface gates decide who gets dessert.</string>
+    <string name="startup_funny_tip_ftp_backpack">Packing the FTP backpack; remote paths travel better when the root is readable.</string>
+    <string name="startup_funny_tip_update_ladder">Leaning the update ladder carefully; package installer does the climbing.</string>
+    <string name="startup_funny_tip_smali_map">Folding the smali map; package-name paths keep the same trail from APK or app.</string>
+    <string name="startup_funny_tip_log_bubbles">Popping log bubbles; noisy refresh messages should not flood Details.</string>
+    <string name="startup_funny_tip_log_zipper">Teaching log archives to zip politely; Clear Logs keeps archived reports out of the broom pile.</string>
+    <string name="startup_funny_tip_install_helmet">Handing installer helmet; split archives can still bump into ABI corners.</string>
+
+    <string name="perm_shizuku_api_label">Shizuku API</string>
+    <string name="perm_shizuku_api_desc">Allows access to Shizuku privileged API.</string>
+    <string name="colorize_app_dropdown">Colorize App Dropdown</string>
+    <string name="about_info" formatted="false">Overview\n• PermsTest is a toolbox for Android package, permission, file, network, logging, debugging, plugin, and memory tasks.\n• Start on Main &gt; Backend and choose the access method that fits the task: Shizuku, Internal Shizuku, LADB, root, or System.\n• Buttons remain disabled until the required file, package, backend, setting, or editor content is ready.\n• Check the bottom output pane after each action. It shows status, paths, command output, exit codes, and useful errors.\n• For troubleshooting, enable Debug Output, mark a log session, reproduce the issue once, then use Full Diagnostic or Archive Logs.\n\nMain / Startup\n• Main &gt; Backend controls the access mode used by privileged actions. Tap Refresh after starting or reconnecting a backend.\n• Device defaults can apply recommended settings for the current device without overwriting later manual choices.\n• Home contains launcher shortcuts, package actions, popout panel entry points, and status rows for common services.\n• Popout panels mirror supported sections so you can keep tools visible while working in another tab.\n\nBackends\n• Shizuku uses the installed Shizuku service after Android grants PermsTest permission.\n• Internal Shizuku uses Wireless Debugging pairing/start controls and must show a ready binder before privileged actions.\n• LADB uses Android Wireless Debugging and may need reconnecting when Android changes the port.\n• Root/Magisk actions require su access. System mode stays inside normal app permissions.\n• Backend failures usually mean the service is stopped, permission was denied, wireless debugging changed, or storage/security policy blocked the command.\n\nShell Tab\n• Run commands through the selected backend and review stdout, stderr, and exit code before trusting the result.\n• Quick Commands provide common Android diagnostics and package/file commands.\n• Custom Commands can be saved, grouped, reordered, imported, exported, filled, or run.\n• Scanned Device Binaries and Bundled Bins help locate tools. Review write, delete, and reset commands before running them.\n\nPackages Tab\n• APK Installer accepts APK, APKS, APKM, and XAPK files. Select the source, review split choices, then tap Install.\n• Android still enforces signatures, version codes, ABI compatibility, target-SDK policy, and install-source rules.\n• Allow Downgrade does not bypass signature mismatch. Use replace/uninstall flows only when you understand the app-data impact.\n• Permissions &amp; State inspects package permissions, grants/revokes supported permissions, and enables/disables packages after review.\n• Package State List saves and loads All, Enabled, or Disabled snapshots. Loaded rows start unchecked and color-code saved state.\n• Debloat presets are review lists. They do not disable anything until you confirm Disable Packages.\n\nFiles Tab\n• Use normal Android file access for shared files or Shizuku/root access for protected paths supported by the selected backend.\n• Long-press files or folders for open, install, copy, cut, paste, rename, delete, path, and properties actions.\n• Split-pane mode transfers between two locations. Confirm the active pane and destination before copying or moving.\n• Root directory size scans are optional because they can be slow or blocked by device policy.\n\nAPK Editor\n• APK Editor can inspect manifests, decode/build with the bundled apktool-compatible helper, rename supported labels, sign outputs, and install test builds.\n• Manifest-only edits do not require smali repack. Use smali repack for actual smali changes.\n• Resource-backed labels and complex APK resources may require manual review after rebuild.\n• Keep original APKs and app data backed up before editing or installing modified packages.\n\nDebugging Tab\n• Shared APK/DEX source controls feed Smali Output, Java Output, DEX selection, and class listing actions.\n• Smali Output disassembles APK/DEX content, searches the workspace, edits smali, and assembles/rebuilds outputs.\n• Java Output runs jadx-go to generate read-only Java views for navigation.\n• DEX to Java can process all top-level DEX entries or only the selected DEX entry, and can zip output when complete.\n• Generated Java is for reading and navigation. Edit smali when you need rebuildable output.\n• Large Java and smali files use the shared virtual editor path to avoid UI stalls.\n\nMemory Tab\n• Select the target package and process before attach, scan, patch, dump, or opening memory tools.\n• Use Exact when the first value is known or Unknown/Snapshot when it is not. Use Next Scan after values change.\n• Confirm addresses, value types, masks, and package scope before writing memory.\n• Memory Hex Editor edits the selected live process. File Hex Editor edits regular files.\n• Keep memory writes small, verified, and reversible whenever possible.\n\nMemory Payloads\n• Payloads store package-scoped original bytes, patched bytes, masks, and optional section markers.\n• Find/Load helps locate matching bytes when addresses change between runs.\n• Apply All and Apply On Attach should be tested one payload at a time on unfamiliar targets.\n• Payload shortcuts launch the target app and apply the selected payload behavior according to the shortcut settings.\n\nVR / Popout Panels\n• Normal phones and tablets use the standard UI path.\n• Enable VR Mode and VR-compatible panel options only on headsets that need Activity-hosted panels.\n• VR-specific UI behavior is gated by VR Mode and should not affect normal phone/tablet behavior while VR Mode is off.\n• Popout panels share the same feature state as the main tabs.\n\nNetwork Tab\n• FTP Server, HTTP Server, SSH Server, and Web Interface expose files or controls over the network. Use trusted networks only.\n• SSH Client connects to trusted hosts and runs commands from the Network tab.\n• Enable sleep operation only while a server must stay available with the screen off.\n• FTP Client transfers between local and remote paths. Confirm selected local/remote rows before upload, download, delete, or rename.\n• Host Tests, HTTP Request, and TCP Port Check provide quick connectivity diagnostics.\n\nSSH Server\n• SSH Server provides password-protected local-network SSH/SFTP access from a foreground service with an ongoing notification.\n• SFTP uses the configured root folder. Shell access is disabled by default and starts a normal app-owned shell, not root.\n• Keep the password private, reset the host key only when you expect SSH clients to warn, and do not expose SSH on an untrusted network.\n\nHTTP Server / Web Interface\n• HTTP Server serves the selected root/index and is stopped from inside the app.\n• Web Interface sections are controlled by app settings. Disabled sections should be hidden and rejected by API calls.\n• Web Interface FTP controls can start FTP only when it is stopped and stop FTP only when it is running.\n• Do not expose package, file, memory, or shell controls on an untrusted network.\n\nScripts Tab\n• Create, edit, save, refresh, and run shell scripts from /sdcard/dev.perms.test/scripts.\n• Scripts run through the selected backend, so backend readiness and command review matter.\n• Script-capable plugins use the same explicit-tap backend path and policy checks.\n• Keep destructive commands separated from read-only diagnostics.\n\nTools Tab\n• Intent Launcher sends configured Android intents. Intent Receiver captures intents sent to declared receiver aliases.\n• Permission Tester creates launchable, manifest-only, or selected-app test APKs with chosen permissions.\n• Activity Manager lists exported/non-exported activities and can launch or create shortcuts where Android allows it.\n• Save Data Editor edits supported save data using package-specific profiles and creates backups before supported writes.\n• Calculator, ASCII/Hex Converter, Alarms/Timers, text editor, file hex editor, and helper tools remain available from Tools.\n\nPlugins Tab\n• Import Plugin stages a .ptp or .zip package. Enable the plugin, then tap one of its action buttons.\n• Bundled plugin choices start unchecked. Restore Selected reinstalls checked bundled plugins; Clean Invalid removes unparseable staged folders.\n• Plugin Editor can create, import, validate, save, package, and export plugin.json/ui.json-based plugins.\n• Declarative plugins use supported PermsTest actions. Script plugins require explicit review before running. Trusted-Dex plugins require matching trusted payload details.\n• Disabled plugins remain inert. Plugins do not launch APK components, services, receivers, boot handlers, or hidden background work.\n\nLogging Tab\n• Filter and Lines control Logcat captures. Save To File stores the next raw Logcat capture instead of dumping it into the output pane.\n• Save Output stores the visible bottom output pane. Share sends the most recently saved/exported file.\n• Full Diagnostic saves output, exports lifetime log, captures Logcat All, and runs the diagnostic/debug capture group in one action.\n• Enable Lifetime Log keeps structured actions across sessions. Turning it off disables View Lifetime, Export Lifetime, Clear Lifetime, and Mark Session.\n• Archive Logs creates a timestamped ZIP of public logs, lifetime logs, plugin reports, app-private snapshots, and diagnostic captures.\n• Clear Logs removes active logs but keeps existing archives.\n\nSettings Tab\n• Automatically Apply Device Defaults applies missing profile defaults while keeping later manual choices.\n• Enable Popout Panels controls supported groupbox windows. Enable VR Mode controls headset-specific UI behavior.\n• Colorize App Dropdown changes app-list status coloring. Fat Dropdown Scrollbars makes dropdown scroll thumbs easier to use.\n• Enable File Open Handler lets other apps send supported files to PermsTest and should stay on unless you choose otherwise.\n• Debug Output adds more status lines for troubleshooting.\n\nStorage Layout\n• Shared root: /sdcard/dev.perms.test\n• Logs and archives: logs and log_archives\n• Plugins: plugins and plugin_exports\n• Debug APKs and workspaces: debug_packages and debugging\n• Java/smali output: debugging/java and debugging/smali\n• Scripts, payloads, dumps, package states, and save configs use their matching feature folders.\n\nAPI / Integration Guides\n• API Guide buttons explain shared controls, Android integration, execution backends, APK/debugging tools, and the Plugin API.\n• Plugin API documentation lists supported plugin.json fields, UI editing, action types, host APIs, native handlers, bundled examples, and Plugin Editor steps.\n• Guides describe available behavior; they do not grant Android permissions, bypass signatures, or bypass platform security.\n\nIncluded Components\n• Shizuku, LADB, smali/baksmali, apktool-go, jadx-go, medit, FTP, HTTP, SSH, and Android PackageInstaller each have their own limits and logs.\n• APK Editor uses apktool-go for APK decode/build tasks, then captures command output and handles signing/install steps in the app.\n• Java Output uses jadx-go for DEX/APK Java-view generation and keeps generated Java read-only for navigation.\n• Logs under logs/apktool and logs/jadx-go show command lines, output paths, exit codes, timing, and summary counters.\n\nSafe Use\n• Android version, OEM restrictions, SELinux, storage access, backend readiness, target-app protection, and app signing affect available actions.\n• Confirm the target package/path before install, uninstall, clear-data, delete, patch, memory-write, save-data-write, or remote-access actions.\n• For a useful report, enable Debug Output, mark a session, reproduce once, then use Full Diagnostic or Archive Logs.\n• Prefer small test changes, keep backups, and verify output before applying bulk package, file, memory, or install operations.</string>
+<string name="about_links" formatted="false">Shizuku\nhttps://github.com/RikkaApps/Shizuku\n\nShizuku API\nhttps://github.com/RikkaApps/Shizuku-API\n\nLADB\nhttps://github.com/tytydraco/LADB\n\napk-medit\nhttps://github.com/sterrasec/apk-medit\n\nAndroid-Disassembler\nhttps://github.com/yhs0602/Android-Disassembler\n\nFTPClient for Android\nhttps://codeberg.org/qwerty287/ftpclient\n\nApache Commons Net\nhttps://commons.apache.org/proper/commons-net/\n\nsmali / baksmali\nhttps://github.com/JesusFreke/smali\n\nApktool source\nhttps://github.com/iBotPeaches/Apktool\n\nJADX source\nhttps://github.com/skylot/jadx\n\nAndroid PackageInstaller\nhttps://developer.android.com/reference/android/content/pm/PackageInstaller\n\nAndroid Storage Access Framework\nhttps://developer.android.com/guide/topics/providers/document-provider</string>
+    <string name="scanned_device_binaries">Scanned Device Binaries</string>
+    <string name="manage_bundled_bins">Manage Bundled Bins</string>
+    <string name="cmd_adb">adb</string>
+    <string name="cmd_reboot">reboot</string>
+    <string name="shell_menu_title_gzip">gzip</string>
+    <string name="shell_menu_title_gunzip">gunzip</string>
+    <string name="shell_menu_title_setenforce">setenforce …</string>
+    <string name="shell_menu_title_screenrecord">screenrecord</string>
+    <string name="shell_menu_title_start">start</string>
+    <string name="shell_menu_title_sysctl">sysctl</string>
+    <string name="shell_menu_title_fastboot">fastboot</string>
+    <string name="shell_menu_title_tcpdump">tcpdump</string>
+    <string name="shell_menu_title_getevent">getevent</string>
+    <string name="shell_menu_title_lsof">lsof</string>
+    <string name="shell_confirm_setenforce_title">Confirm setenforce</string>
+    <string name="shell_confirm_setenforce_message">Run: %1$s
+
+This attempts to change SELinux enforcement state.</string>
+    <string name="shell_action_run">Run</string>
+    <string name="shell_action_cancel">Cancel</string>
+        <string name="shell_menu_title_base64">base64</string>
+    <string name="shell_menu_title_clear">clear</string>
+    <string name="shell_menu_title_free">free</string>
+    <string name="shell_menu_title_vmstat">vmstat</string>
+    <string name="shell_menu_title_watch">watch</string>
+    <string name="shell_menu_title_curl">curl</string>
+    <string name="shell_menu_title_ip">ip</string>
+    <string name="shell_menu_title_ping">ping</string>
+    <string name="shell_menu_title_sha256sum">sha256sum</string>
+    <string name="shell_menu_title_xxd">xxd</string>
+    <string name="shell_menu_title_yes">yes</string>
+    <string name="shell_menu_title_zcat">zcat</string>
+    <string name="shell_menu_title_zipinfo">zipinfo</string>
+    <string name="shell_menu_title_ziptool">ziptool</string>
+    <string name="shell_menu_title_dos2unix">dos2unix</string>
+    <string name="shell_menu_title_tty">tty</string>
+    <string name="shell_menu_title_umount">umount</string>
+    <string name="shell_menu_title_unix2dos">unix2dos</string>
+
+    <string name="startup_loading_stage_release_selector">Preparing release selector</string>
+    <string name="startup_loading_stage_update_channel">Checking update channel settings</string>
+    <string name="startup_loading_stage_silent_install">Preparing silent update install path</string>
+    <string name="startup_loading_stage_release_assets">Reading release assets</string>
+    <string name="startup_loading_stage_apk_filter">Filtering APK assets</string>
+    <string name="startup_loading_stage_update_staging">Preparing managed update staging</string>
+    <string name="startup_loading_stage_backend_installer">Checking installer backend</string>
+    <string name="startup_loading_stage_diagnostics_sync">Preparing diagnostic status</string>
+    <string name="startup_loading_stage_smali_workspace">Indexing smali workspace</string>
+    <string name="startup_loading_stage_payload_state">Checking payload state</string>
+    <string name="startup_loading_stage_web_bridge">Preparing web status bridge</string>
+    <string name="startup_loading_stage_file_helpers">Checking file access</string>
+    <string name="startup_loading_stage_vr_gates">Applying VR-compatible settings</string>
+    <string name="startup_loading_stage_network_keepalive">Preparing network keep-alive settings</string>
+    <string name="startup_loading_stage_log_tail">Preparing log tail buffers</string>
+
+    <string name="startup_tip_release_selector">Allow Downgrade opens a selectable release list for the chosen update channel instead of auto-picking one APK.</string>
+    <string name="startup_tip_prerelease_channel">Include Pre-Releases checks the GitHub prerelease channel before stable releases.</string>
+    <string name="startup_tip_allow_downgrade_picker">Downgrade installs still use Android package rules, so package signatures must match the installed app.</string>
+    <string name="startup_tip_auto_update_channel">Auto Update uses the selected Release or Pre-Release channel and keeps manual Check For Updates unchanged.</string>
+    <string name="startup_tip_silent_update_backend">Silent updates use the selected privileged backend and fall back to logging if installation cannot complete.</string>
+    <string name="startup_tip_update_staging_cleanup">Downloaded update APKs are staged in managed app storage and cleaned by startup cache cleanup.</string>
+    <string name="startup_tip_smali_open_any">Open Any in the smali editor allows external smali files without requiring a current disassembly folder.</string>
+    <string name="startup_tip_debugging_service_jobs">Smali searches run through the foreground job service so long searches can continue after tab navigation.</string>
+    <string name="startup_tip_memory_payload_masks">Payload masks preserve wildcard bytes so runtime-specific pointer bytes can remain untouched.</string>
+    <string name="startup_tip_hex_address_sync">Disassembly address taps can synchronize the Hex Editor to the selected instruction target.</string>
+    <string name="startup_tip_web_interface_gates">Web Interface access settings hide disabled sections and reject requests to them.</string>
+    <string name="startup_tip_ftp_background">FTP and HTTP background modes use foreground services so Android is less likely to stop active sessions.</string>
+    <string name="startup_tip_files_shizuku_copy">Files tab Shizuku copy paths help operations work across storage locations that normal app access cannot reach.</string>
+    <string name="startup_tip_vr_panel_separation">VR panel mode keeps headset window behavior gated separately from normal tablet and phone overlays.</string>
+    <string name="startup_tip_lifetime_log">Lifetime logs make it easier to compare startup, install, network, and memory behavior across test runs.</string>
+
+    <string name="startup_funny_stage_release_oracle">Consulting release oracle</string>
+    <string name="startup_funny_stage_pre_gremlins">Sorting pre-release gremlins</string>
+    <string name="startup_funny_stage_update_shoes">Tying update shoes</string>
+    <string name="startup_funny_stage_asset_shelf">Dusting asset shelf</string>
+    <string name="startup_funny_stage_backend_tea">Pouring backend tea</string>
+    <string name="startup_funny_stage_smali_laundry">Folding smali laundry</string>
+    <string name="startup_funny_stage_payload_weather">Checking payload weather</string>
+    <string name="startup_funny_stage_vr_tape">Measuring VR tape</string>
+    <string name="startup_funny_stage_log_fountain">Unclogging log fountain</string>
+    <string name="startup_funny_stage_network_socks">Pairing network socks</string>
+    <string name="startup_funny_stage_hex_mittens">Knitting hex mittens</string>
+    <string name="startup_funny_stage_permission_lantern">Lighting permission lantern</string>
+    <string name="startup_funny_stage_file_biscuit">Butterizing file biscuit</string>
+    <string name="startup_funny_stage_shell_parade">Organizing shell parade</string>
+    <string name="startup_funny_stage_cache_sweater">Washing cache sweater</string>
+
+    <string name="startup_funny_tip_release_oracle">Consulting release oracle; it demands one APK and a respectful version tag.</string>
+    <string name="startup_funny_tip_pre_gremlins">Sorting pre-release gremlins; the stable ones keep wearing tiny lab coats.</string>
+    <string name="startup_funny_tip_update_shoes">Tying update shoes so the installer does not trip over its own package name.</string>
+    <string name="startup_funny_tip_asset_shelf">Dusting asset shelf; one APK rolled behind the changelog again.</string>
+    <string name="startup_funny_tip_backend_tea">Pouring backend tea; Shizuku likes it privileged but not too hot.</string>
+    <string name="startup_funny_tip_smali_laundry">Folding smali laundry; every method gets its own tiny drawer.</string>
+    <string name="startup_funny_tip_payload_weather">Checking payload weather; cloudy with a chance of preserved wildcard bytes.</string>
+    <string name="startup_funny_tip_vr_tape">Measuring VR tape twice so headset windows do not become postage stamps.</string>
+    <string name="startup_funny_tip_log_fountain">Unclogging log fountain; one debug line tried to become a waterfall.</string>
+    <string name="startup_funny_tip_network_socks">Pairing network socks; FTP found one, HTTP found the other.</string>
+    <string name="startup_funny_tip_hex_mittens">Knitting hex mittens so cold bytes stop pretending to be strings.</string>
+    <string name="startup_funny_tip_permission_lantern">Lighting permission lantern; Android storage caves are dramatic today.</string>
+    <string name="startup_funny_tip_file_biscuit">Butterizing file biscuit; crunchy paths taste better with Shizuku.</string>
+    <string name="startup_funny_tip_shell_parade">Organizing shell parade; every command must march in quoting order.</string>
+    <string name="startup_funny_tip_cache_sweater">Washing cache sweater; lint removed from three temp folders and a suspicious APK pocket.</string>
+
+
+    <string name="startup_loading_stage_memory_running_labels">Preparing memory package running labels</string>
+    <string name="startup_loading_stage_device_os_badge">Reading Android OS badge</string>
+    <string name="startup_loading_stage_package_cache_fastpath">Preparing package dropdown fast path</string>
+    <string name="startup_loading_stage_update_picker_paths">Checking update picker paths</string>
+    <string name="startup_loading_stage_smali_intents">Preparing smali intent routing</string>
+    <string name="startup_loading_stage_install_debug_logs">Preparing install debug logs</string>
+    <string name="startup_loading_stage_memory_dropdown_modes">Applying memory dropdown modes</string>
+    <string name="startup_loading_stage_about_layout">Loading About and API guides</string>
+    <string name="startup_loading_stage_privileged_shell">Checking privileged shell routing</string>
+    <string name="startup_loading_stage_payload_masks_verify">Checking payload mask settings</string>
+    <string name="startup_loading_stage_file_provider">Preparing FileProvider URI sharing</string>
+    <string name="startup_loading_stage_network_binders">Refreshing network service status</string>
+    <string name="startup_loading_stage_vr_buttons">Sizing VR-safe buttons</string>
+    <string name="startup_loading_stage_package_extractors">Preparing package extractors</string>
+    <string name="startup_loading_stage_settings_defaults">Initializing missing settings defaults</string>
+
+    <string name="startup_tip_memory_running_labels">Show Running Packages labels active processes; Only Show Running Packages filters the target list.</string>
+    <string name="startup_tip_device_os_badge">The Main tab device info row includes Android OS version beside profile, device, CPU, DPI, language, and serial.</string>
+    <string name="startup_tip_package_cache_fastpath">Package dropdowns use cached installed-app data where possible so selection panels open faster.</string>
+    <string name="startup_tip_update_picker_paths">Allow Downgrade uses a selectable release list while normal update checks keep using the newest candidate.</string>
+    <string name="startup_tip_smali_intents">External smali files can route into the internal editor without being mistaken for package installs.</string>
+    <string name="startup_tip_install_debug_logs">Package install debug logs use the same result format no matter where the install was started.</string>
+    <string name="startup_tip_memory_dropdown_modes">Show Running Packages labels active processes, while Only Show Running Packages filters the Memory target list.</string>
+    <string name="startup_tip_about_layout">The About page summarizes real app workflows and keeps links/update controls easy to find.</string>
+    <string name="startup_tip_privileged_shell">Shizuku, Internal Shizuku, and LADB stay separated so backend errors are easier to read.</string>
+    <string name="startup_tip_payload_masks_verify">Payload write verification compares expected bytes after preserving wildcard mask regions.</string>
+    <string name="startup_tip_file_provider">Managed FileProvider URI grants keep downloaded updates and staged files readable by Android installers.</string>
+    <string name="startup_tip_network_binders">FTP, HTTP, and Web Interface controls show service state without changing roots unexpectedly.</string>
+    <string name="startup_tip_vr_buttons">VR-compatible panels use slightly larger controls where clipped text is likely inside headset windows.</string>
+    <string name="startup_tip_settings_defaults">New settings defaults are filled only when missing, so saved preferences survive updates.</string>
+    <string name="startup_tip_package_extractors">Extract installed packages from Packages, Debugging, or debug-package tools when a local APK copy is needed.</string>
+
+    <string name="startup_funny_stage_dropdown_sprint">Teaching dropdowns to sprint</string>
+    <string name="startup_funny_stage_ptrace_hat">Trying on ptrace hat</string>
+    <string name="startup_funny_stage_release_fishing">Fishing for release fish</string>
+    <string name="startup_funny_stage_smali_confetti">Sweeping smali confetti</string>
+    <string name="startup_funny_stage_vr_button_stretch">Stretching VR buttons</string>
+    <string name="startup_funny_stage_shell_marshmallows">Toasting shell marshmallows</string>
+    <string name="startup_funny_stage_hex_spoons">Counting hex spoons</string>
+    <string name="startup_funny_stage_payload_bubbles">Blowing payload bubbles</string>
+    <string name="startup_funny_stage_log_hamster">Feeding log hamster</string>
+    <string name="startup_funny_stage_file_umbrella">Opening file umbrella</string>
+    <string name="startup_funny_stage_network_pancakes">Flipping network pancakes</string>
+    <string name="startup_funny_stage_package_socks">Sorting package socks</string>
+    <string name="startup_funny_stage_settings_garden">Watering settings garden</string>
+    <string name="startup_funny_stage_update_wagon">Loading update wagon</string>
+    <string name="startup_funny_stage_cache_sandcastle">Guarding cache sandcastle</string>
+
+    <string name="startup_funny_tip_dropdown_sprint">Teaching dropdowns to sprint; one package list requested tiny running shoes and a dramatic countdown.</string>
+    <string name="startup_funny_tip_ptrace_hat">Trying on ptrace hat; Android 9 says it fits, Android 10 says fashion rules changed.</string>
+    <string name="startup_funny_tip_release_fishing">Fishing for release fish; prereleases keep wearing shiny beta scales.</string>
+    <string name="startup_funny_tip_smali_confetti">Sweeping smali confetti; every label jumped out of a method and yelled surprise.</string>
+    <string name="startup_funny_tip_vr_button_stretch">Stretching VR buttons so headset pixels stop chewing the update text.</string>
+    <string name="startup_funny_tip_shell_marshmallows">Toasting shell marshmallows; quotes go on the stick before the command catches fire.</string>
+    <string name="startup_funny_tip_hex_spoons">Counting hex spoons; byte 0x2A insists it is the fancy one.</string>
+    <string name="startup_funny_tip_payload_bubbles">Blowing payload bubbles; masked bytes float away but politely come back after write verify.</string>
+    <string name="startup_funny_tip_log_hamster">Feeding log hamster; it runs faster when Debug Output gives it timestamps.</string>
+    <string name="startup_funny_tip_file_umbrella">Opening file umbrella; scoped storage rain is in the forecast again.</string>
+    <string name="startup_funny_tip_network_pancakes">Flipping network pancakes; FTP wants syrup, HTTP wants headers.</string>
+    <string name="startup_funny_tip_package_socks">Sorting package socks; debuggable ones are blue and somehow still missing one sock.</string>
+    <string name="startup_funny_tip_settings_garden">Watering settings garden; defaults grow only where preferences are empty.</string>
+    <string name="startup_funny_tip_update_wagon">Loading update wagon; direct APK links get front-row seats.</string>
+    <string name="startup_funny_tip_cache_sandcastle">Guarding cache sandcastle; startup cleanup brought a very official little shovel.</string>
+
+    <string name="randomize_current_tooltips">Randomize Current Tooltips</string>
+
+    <string name="animation_category">Animation Category</string>
+    <string name="startup_animation_settings_label">Startup Animation</string>
+    <string name="randomize_all_tooltips">Randomize All Tooltips</string>
+
+    <string name="startup_group_g420_stage">Preparing high-level diagnostics</string>
+    <string name="startup_group_g420_tip">Use this category when the startup screen needs relaxed-but-accurate diagnostics while privileged services settle.</string>
+    <string name="startup_group_g420_funny_stage">Rolling perfect 0x420 vibes</string>
+    <string name="startup_group_g420_funny_tip">Reticulating snack clouds; the byte garden insists it can smell colors now.</string>
+
+    <string name="startup_group_star_wars_stage">Aligning starship-grade package scanners</string>
+    <string name="startup_group_star_wars_tip">Release, prerelease, and direct APK paths are checked before the jump to install space.</string>
+    <string name="startup_group_star_wars_funny_stage">Convincing tiny droids to sort APK assets</string>
+    <string name="startup_group_star_wars_funny_tip">A very dramatic protocol droid translated chmod into beeps and complained about sand.</string>
+
+    <string name="startup_group_android_core_stage">Checking Android runtime gates</string>
+    <string name="startup_group_android_core_tip">Device profile, OS version, backend mode, and privileged capability checks are staged before the UI opens.</string>
+    <string name="startup_group_android_core_funny_stage">Giving the framework a sensible hat</string>
+    <string name="startup_group_android_core_funny_tip">Android politely asked if every service could stop standing in the doorway at once.</string>
+
+    <string name="startup_group_memory_hunter_stage">Preparing memory target tools</string>
+    <string name="startup_group_memory_hunter_tip">Select a package/process, then use running-state filters, payload masks, Hex sync, and attach controls as needed.</string>
+    <string name="startup_group_memory_hunter_funny_stage">Teaching memory addresses to wear nametags</string>
+    <string name="startup_group_memory_hunter_funny_tip">One pointer hid behind a couch; the scanner found it because it was glowing suspiciously.</string>
+
+    <string name="startup_group_smali_forge_stage">Heating smali workspace paths</string>
+    <string name="startup_group_smali_forge_tip">Use Disassemble, Open Any, Search, and Rebuild for the selected smali/APK workspace.</string>
+    <string name="startup_group_smali_forge_funny_stage">Sharpening tiny smali chisels</string>
+    <string name="startup_group_smali_forge_funny_tip">The labels formed a union and demanded better line numbers and a coffee machine.</string>
+
+    <string name="startup_group_network_ops_stage">Binding network service controls</string>
+    <string name="startup_group_network_ops_tip">FTP, HTTP, client browsing, background mode, and access-gate status lines are prepared.</string>
+    <string name="startup_group_network_ops_funny_stage">Polishing router goblins</string>
+    <string name="startup_group_network_ops_funny_tip">HTTP brought headers, FTP brought snacks, and neither remembered the napkins.</string>
+
+    <string name="startup_group_file_browser_stage">Preparing file access</string>
+    <string name="startup_group_file_browser_tip">Choose standard or Shizuku file access, then use row menus for open, copy, move, install, and properties.</string>
+    <string name="startup_group_file_browser_funny_stage">Teaching folders to use indoor voices</string>
+    <string name="startup_group_file_browser_funny_tip">A ZIP file tried to unzip itself for attention and immediately regretted the spotlight.</string>
+
+    <string name="startup_group_update_channel_stage">Checking update channel settings</string>
+    <string name="startup_group_update_channel_tip">Release, prerelease, downgrade picker, custom URL, and direct APK handling are staged cleanly.</string>
+    <string name="startup_group_update_channel_funny_stage">Training update pigeons</string>
+    <string name="startup_group_update_channel_funny_tip">One prerelease wore a fake mustache and still got sorted by version number.</string>
+
+    <string name="startup_group_vr_lab_stage">Preparing VR-safe panels</string>
+    <string name="startup_group_vr_lab_tip">Enable VR mode only for headset-friendly panels and controls; normal tablet behavior remains separate.</string>
+    <string name="startup_group_vr_lab_funny_stage">Measuring headset pixels with a spoon</string>
+    <string name="startup_group_vr_lab_funny_tip">The VR panel asked for more elbow room and then floated five feet to the left.</string>
+
+    <string name="startup_group_debug_circus_stage">Staging debug package workflows</string>
+    <string name="startup_group_debug_circus_tip">Use Debugging for debuggable APKs, MITM reports, smali jobs, install logs, and package workspaces.</string>
+    <string name="startup_group_debug_circus_funny_stage">Inflating the debug circus tent</string>
+    <string name="startup_group_debug_circus_funny_tip">The stack trace juggler dropped three exceptions and called it experimental choreography.</string>
+
+    <string name="startup_group_shell_dungeon_stage">Preparing shell command runners</string>
+    <string name="startup_group_shell_dungeon_tip">Choose Shizuku or LADB, run the command, then check captured output and command status.</string>
+    <string name="startup_group_shell_dungeon_funny_stage">Lighting torches in shell dungeon</string>
+    <string name="startup_group_shell_dungeon_funny_tip">The prompt rolled initiative; stdout crit, stderr missed, exit code looked concerned.</string>
+
+    <string name="startup_group_save_data_vault_stage">Opening save-data editing vault</string>
+    <string name="startup_group_save_data_vault_tip">Select a package/config, create a backup, then review section-scoped edits before applying them.</string>
+    <string name="startup_group_save_data_vault_funny_stage">Dusting tiny save-data vaults</string>
+    <string name="startup_group_save_data_vault_funny_tip">A config key wore a monocle and insisted it was schema-compliant royalty.</string>
+
+    <string name="startup_group_apk_workshop_stage">Sorting APK workshop tools</string>
+    <string name="startup_group_apk_workshop_tip">Review split choices, staging mode, rebuild options, and extraction paths before installing.</string>
+    <string name="startup_group_apk_workshop_funny_stage">Tying APK shoelaces</string>
+    <string name="startup_group_apk_workshop_funny_tip">A base APK and three splits asked who brought the ABI chart.</string>
+
+    <string name="startup_group_permissions_desk_stage">Preparing permission desk controls</string>
+    <string name="startup_group_permissions_desk_tip">Select a package and permission/state action before using Grant, Revoke, Enable, or Disable.</string>
+    <string name="startup_group_permissions_desk_funny_stage">Stamping permission paperwork</string>
+    <string name="startup_group_permissions_desk_funny_tip">The permission clerk approved READ_SNACKS but denied WRITE_CHAOS pending review.</string>
+
+    <string name="startup_group_logbook_stage">Opening operational logbook</string>
+    <string name="startup_group_logbook_tip">Use Logcat, Save Output, Mark Session, Lifetime Log, and Archive Logs to capture the information you need.</string>
+    <string name="startup_group_logbook_funny_stage">Feeding the logbook hamster</string>
+    <string name="startup_group_logbook_funny_tip">It runs faster when timestamps arrive, but gets dramatic around stack traces.</string>
+
+    <string name="startup_group_web_interface_stage">Starting web interface bridge checks</string>
+    <string name="startup_group_web_interface_tip">Set the HTTP root/index and Web Interface access sections before starting remote controls.</string>
+    <string name="startup_group_web_interface_funny_stage">Teaching the web bridge manners</string>
+    <string name="startup_group_web_interface_funny_tip">The browser knocked twice, brought cookies, and asked if localhost was home.</string>
+
+    <string name="startup_group_payload_lab_stage">Preparing payload lab benches</string>
+    <string name="startup_group_payload_lab_tip">Payload JSON, masks, preserve bytes, auto-apply, and verification output are staged carefully.</string>
+    <string name="startup_group_payload_lab_funny_stage">Putting goggles on payloads</string>
+    <string name="startup_group_payload_lab_funny_tip">Masked bytes promised to stay invisible and then immediately wore neon shoes.</string>
+
+    <string name="startup_group_hex_grid_stage">Aligning hex grid tools</string>
+    <string name="startup_group_hex_grid_tip">Hex rows, ASCII sync, selection nudges, read/write size, and address jumps are prepared.</string>
+    <string name="startup_group_hex_grid_funny_stage">Counting hex spoons again</string>
+    <string name="startup_group_hex_grid_funny_tip">Byte 0xFF demanded a cape; byte 0x00 requested a quiet corner.</string>
+
+    <string name="startup_group_controller_room_stage">Checking controller room signals</string>
+    <string name="startup_group_controller_room_tip">Use input diagnostics and device defaults when testing controller-style controls.</string>
+    <string name="startup_group_controller_room_funny_stage">Asking buttons to form a line</string>
+    <string name="startup_group_controller_room_funny_tip">The controller reported every button was player one and requested a tiny trophy.</string>
+
+    <string name="startup_group_garage_lab_stage">Warming garage-lab diagnostics</string>
+    <string name="startup_group_garage_lab_tip">Use the available checks, logs, and update tools to diagnose the current device state.</string>
+    <string name="startup_group_garage_lab_funny_stage">Calibrating the garage raccoon</string>
+    <string name="startup_group_garage_lab_funny_tip">It tightened two bolts, labeled a cable, and stole exactly one 10mm socket.</string>
+
+</resources>

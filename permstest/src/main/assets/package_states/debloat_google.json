@@ -1,0 +1,33 @@
+{
+  "type": "package_state_list",
+  "user": 0,
+  "filter": "all",
+  "stateSource": "dumpsys-user-enabled",
+  "packages": [
+    {"package":"com.android.chrome","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.adservices.api","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.apps.carrier.carrierwifi","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.apps.maps","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.apps.messaging","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.apps.restore","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.apps.tachyon","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.as.oss","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.cellbroadcastreceiver","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.cellbroadcastservice","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.feedback","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.gm","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.gms.location.history","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.googlequicksearchbox","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.networkstack.tethering.overlay","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.onetimeinitializer","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.partnersetup","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.safetycenter.resources","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.setupwizard","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.syncadapters.calendar","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.tts","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.android.youtube","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.ar.core","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.mainline.adservices","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.google.mainline.telemetry","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true}
+  ]
+}

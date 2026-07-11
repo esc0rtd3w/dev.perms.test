@@ -1,0 +1,32 @@
+plugins {
+    id('com.android.application')
+}
+
+android {
+    namespace 'dev.perms.test.internal_server'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'dev.perms.test.internal_server'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    // This APK is not installed; it is packaged as an asset and used only as a CLASSPATH container.
+    // Keep it simple and stable.
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    // Contains rikka.shizuku.server.ShizukuService (main entrypoint).
+    implementation project(':server')
+}

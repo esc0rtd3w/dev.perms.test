@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        app:tabIndicatorFullWidth="false" />
+
+    <!-- Tab content area -->
+    <FrameLayout
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- MAIN TAB -->
+        
+        <include
+            android:id="@+id/tabMain"
+            layout="@layout/tab_main" />
+
+
+        <!-- SHELL TAB -->
+        
+        <include
+            android:id="@+id/tabShell"
+            layout="@layout/tab_shell" />
+
+
+        <!-- PACKAGE TOOLS TAB -->
+        
+        <include
+            android:id="@+id/tabPackages"
+            layout="@layout/tab_packages" />
+
+        <!-- MEMORY TAB -->
+
+        <include
+            android:id="@+id/tabMemory"
+            layout="@layout/tab_memory" />
+
+<!-- FILES TAB -->
+
+        <include
+            android:id="@+id/tabFiles"
+            layout="@layout/tab_files" />
+
+
+        <!-- NETWORK TAB -->
+
+        <include
+            android:id="@+id/tabNetwork"
+            layout="@layout/tab_network" />
+
+
+        <!-- SCRIPTS TAB -->
+        
+        <include
+            android:id="@+id/tabScripts"
+            layout="@layout/tab_scripts" />
+
+
+        <!-- DEBUGGING TAB -->
+
+        <include
+            android:id="@+id/tabDebugging"
+            layout="@layout/tab_debugging" />
+
+
+        <!-- TOOLS TAB -->
+
+        <include
+            android:id="@+id/tabTools"
+            layout="@layout/tab_tools" />
+
+
+        <!-- LOGGING TAB -->
+        
+        <include
+            android:id="@+id/tabLogging"
+            layout="@layout/tab_logging" />
+
+
+        <!-- PLUGINS TAB -->
+
+        <include
+            android:id="@+id/tabPlugins"
+            layout="@layout/tab_plugins" />
+
+
+        <!-- SETTINGS TAB -->
+        
+        <include
+            android:id="@+id/tabSettings"
+            layout="@layout/tab_settings" />
+
+
+        <!-- ABOUT TAB -->
+        
+        <include
+            android:id="@+id/tabAbout"
+            layout="@layout/tab_about" />
+
+
+    </FrameLayout>
+
+
+    <!-- Drag bar to resize the output/log panel -->
+    <LinearLayout
+        android:id="@+id/logResizeBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="@android:color/transparent">
+
+        <View
+            android:id="@+id/logResizeHandle"
+            android:layout_width="96dp"
+            android:layout_height="8dp"
+            android:background="@drawable/log_resize_handle" />
+
+    </LinearLayout>
+
+    <!-- Output/log area: always visible when expanded -->
+    <LinearLayout
+        android:id="@+id/outputPanel"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:clipChildren="true"
+        android:clipToPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/outputStatusBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:id="@+id/outputStatusChipRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipShizukuStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="180dp"
+                        android:minHeight="36dp"
+                        android:text="Shizuku: Not running"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:maxWidth="1000dp"
+                        android:clickable="false"
+                        android:checkable="false"
+                        android:focusable="false"
+                        app:chipIconVisible="false"
+                        app:closeIconVisible="false"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        app:textStartPadding="0dp"
+                        app:textEndPadding="0dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLadbStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="180dp"
+                        android:minHeight="36dp"
+                        android:text="LADB: Disabled"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:maxLines="1"
+                        android:maxWidth="1000dp"
+                        android:clickable="false"
+                        android:checkable="false"
+                        android:focusable="false"
+                        app:chipIconVisible="false"
+                        app:closeIconVisible="false"
+                        app:chipStartPadding="16dp"
+                        app:chipEndPadding="16dp"
+                        app:textStartPadding="0dp"
+                        app:textEndPadding="0dp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/outputStatusSpacer"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/outputActionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical|end">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnResetOutputGlobal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Reset" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnClearOutputGlobal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="36dp"
+                        android:text="Clear" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/outputFrame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="0dp">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollOutput"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:scrollbars="none" >
+
+                <TextView
+                    android:id="@+id/txtOutput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Output will appear here..."
+                    android:saveEnabled="false"
+                    android:freezesText="false"
+                    android:textIsSelectable="true"
+                    android:textSize="12sp"
+                    android:typeface="monospace" />
+
+            </androidx.core.widget.NestedScrollView>
+
+            <!-- Wider touch target for fast scrolling on tablets -->
+            <View
+                android:id="@+id/fastScrollTouch"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="@android:color/transparent" />
+
+            <View
+                android:id="@+id/fastScrollThumb"
+                android:layout_width="10dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end|top"
+                android:layout_marginEnd="4dp"
+                android:alpha="0.8"
+                android:visibility="gone"
+                android:background="@drawable/fast_scroll_thumb" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

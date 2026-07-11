@@ -1,0 +1,25 @@
+{
+  "type": "package_state_list",
+  "user": 0,
+  "filter": "all",
+  "stateSource": "dumpsys-user-enabled",
+  "packages": [
+    {"package":"com.android.calllogbackup","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.carrierconfig","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.carrierdefaultapp","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.dynsystem","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.managedprovisioning","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.ons","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.phone","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.phone.auto_generated_characteristics_rro","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.providers.blockednumber","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.providers.calendar","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.providers.contactkeys","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.providers.telephony","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.rkpdapp","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.se","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.server.telecom","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.simappdialog","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true},
+    {"package":"com.android.stk","enabled":false,"enabledState":"disabled_user","pmListedDisabled":true}
+  ]
+}
